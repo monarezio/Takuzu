@@ -1,2 +1,7 @@
 # Takuzu
-a game inspired by [Binairo](http://www.20minutes.fr/services/takuzu/)
+a game inspired by [Takuzu](https://en.wikipedia.org/wiki/Takuzu)
+
+### TODO
+- [ ] Create interfaces
+- [ ] Game logic
+- [ ] Game presentation
