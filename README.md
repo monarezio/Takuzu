@@ -2,7 +2,7 @@
 a game inspired by [Takuzu](https://en.wikipedia.org/wiki/Takuzu)
 
 ### TODO
-- [ ] Create interfaces
+- [X] Create interfaces
 - [ ] Game logic
 - [ ] Game presentation
-- [ ] Raw grid
+- [X] Create Gameboard Layout
