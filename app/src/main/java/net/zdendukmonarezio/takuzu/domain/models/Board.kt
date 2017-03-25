@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package net.zdendukmonarezio.takuzu.domain.models
 
 import net.zdendukmonarezio.takuzu.domain.Game
@@ -22,4 +23,24 @@ interface Board {
      * returns a new GameBoard with the edited fields, if possible
      */
     fun set(x: Int, y: Int, field: Field): Board
+=======
+package net.zdendukmonarezio.takuzu.domain.models
+
+/**
+ * Created by samuelkodytek on 06/03/2017.
+ */
+interface Board {
+
+    /**
+     * returns fields
+     */
+    fun getFields(): List<List<Field>>
+
+    /**
+     * returns locked fields (unchangeable)
+     */
+    fun getLockedFields(): List<Pair<Int, Int>> //TODO: save as coordinate (will extend Pair)
+
+
+>>>>>>> d3b26220f16f7b0d6ab826223ea85edf276d3ad7
 }

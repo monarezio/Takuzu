@@ -10,8 +10,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.zdendukmonarezio.takuzu.presentation.MainActivity">
 
-    <TextView
+    <com.example.semanticer.unstable.presentation.GameBoardLayout
+        android:id="@+id/game_board_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_centerInParent="true" />
+
 </RelativeLayout>
