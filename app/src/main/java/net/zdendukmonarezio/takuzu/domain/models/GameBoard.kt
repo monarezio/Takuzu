@@ -6,6 +6,10 @@ import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
  * Created by samuelkodytek on 06/03/2017.
  */
 class GameBoard private constructor(fields: List<List<Field>>, lockedFields: List<Pair<Int, Int>>): Board {
+    override fun rows(): Int = getFields().size
+
+    override fun columns(): Int = getFields()[0].size
+
     private val fields: List<List<Field>> = fields
     private val lockedFields: List<Pair<Int, Int>> = lockedFields
 

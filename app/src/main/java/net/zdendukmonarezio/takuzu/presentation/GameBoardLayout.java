@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridLayout;
 
+import net.zdendukmonarezio.takuzu.domain.models.GameBoard;
+
 public class GameBoardLayout extends GridLayout {
 
     private OnMoveListener listener;

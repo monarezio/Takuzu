@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 package net.zdendukmonarezio.takuzu.domain.models
-
-import net.zdendukmonarezio.takuzu.domain.Game
-import net.zdendukmonarezio.takuzu.domain.models.Field
 
 /**
  * Created by samuelkodytek on 06/03/2017.
@@ -23,24 +19,16 @@ interface Board {
      * returns a new GameBoard with the edited fields, if possible
      */
     fun set(x: Int, y: Int, field: Field): Board
-=======
-package net.zdendukmonarezio.takuzu.domain.models
-
-/**
- * Created by samuelkodytek on 06/03/2017.
- */
-interface Board {
 
     /**
-     * returns fields
+     * returns amount rows
+     * TODO: discuss the usefulness of this function
      */
-    fun getFields(): List<List<Field>>
+    fun rows(): Int
 
     /**
-     * returns locked fields (unchangeable)
+     * returns amount columns
+     * TODO: discuss the usefulness of this function
      */
-    fun getLockedFields(): List<Pair<Int, Int>> //TODO: save as coordinate (will extend Pair)
-
-
->>>>>>> d3b26220f16f7b0d6ab826223ea85edf276d3ad7
+    fun columns(): Int
 }
