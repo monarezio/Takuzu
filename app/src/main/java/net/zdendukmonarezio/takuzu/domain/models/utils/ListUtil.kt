@@ -2,11 +2,12 @@ package net.zdendukmonarezio.takuzu.domain.models.utils
 
 import net.zdendukmonarezio.takuzu.domain.models.Field
 import net.zdendukmonarezio.takuzu.domain.models.extensions.random
+import net.zdendukmonarezio.takuzu.domain.models.extensions.set
 
 /**
  * Created by samuelkodytek on 07/03/2017.
  */
-object  ListUtil {
+object ListUtil {
     /**
      * generate a list a pairs with random numbers
      */
@@ -34,7 +35,8 @@ object  ListUtil {
             val last = lockedFields.last()
             val first = last.first
             val second = last.second
-            val newFields = fields.mapIndexed { first , list -> list.mapIndexed { second, field -> field }}
+            val newFields = fields.set(first, fields[first].set(second, Field.BLUE))
+            syncFields(newFields, lockedFields.dropLast(1))
         }
 
         return fields
