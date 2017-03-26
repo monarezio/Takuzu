@@ -11,7 +11,7 @@ interface Takuzu {
     /**
      * performs when a move was made
      */
-    fun onMoveMade(x: Int, y: Int): Board //TODO: discuss
+    fun onMoveMade(x: Int, y: Int): Takuzu //TODO: discuss
 
     /**
      * returns gameboard
