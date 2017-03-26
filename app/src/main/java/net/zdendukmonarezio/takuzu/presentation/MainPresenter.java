@@ -6,7 +6,6 @@ import net.zdendukmonarezio.takuzu.domain.Game;
 import net.zdendukmonarezio.takuzu.domain.Takuzu;
 import net.zdendukmonarezio.takuzu.domain.models.Board;
 
-import nucleus.presenter.Presenter;
 import nucleus.presenter.RxPresenter;
 
 public class MainPresenter extends RxPresenter<MainView> {

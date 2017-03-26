@@ -12,6 +12,7 @@ import android.widget.GridLayout;
 import net.zdendukmonarezio.takuzu.R;
 import net.zdendukmonarezio.takuzu.domain.models.Field;
 
+
 public class BoardFieldWidget extends View {
 
     private TextPaint textPaint;
