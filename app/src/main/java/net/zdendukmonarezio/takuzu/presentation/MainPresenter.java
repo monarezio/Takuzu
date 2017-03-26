@@ -2,20 +2,24 @@ package net.zdendukmonarezio.takuzu.presentation;
 
 import android.os.Bundle;
 
+import net.zdendukmonarezio.takuzu.domain.Game;
+import net.zdendukmonarezio.takuzu.domain.Takuzu;
+import net.zdendukmonarezio.takuzu.domain.models.Board;
+
 import nucleus.presenter.Presenter;
 import nucleus.presenter.RxPresenter;
 
 public class MainPresenter extends RxPresenter<MainView> {
 
-    private Game game;
+    private Takuzu game;
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        game = GameImpl.createNew(6, 4);
+        game = Game.createNew(4, 4);
         view().subscribe(view -> {
             if (view != null) {
-                view.showGameBoard(game.getBoard());
+                view.showGameBoard(game.getGameBoard());
             }
         });
     }
@@ -23,7 +27,7 @@ public class MainPresenter extends RxPresenter<MainView> {
     public void onMoveMade(int x, int y) {
         if (!game.isGameOver()) {
             if (game.isMovePossible(x, y)) {
-                GameBoard newGameBoard = game.onMoveMade(x, y);
+                Board newGameBoard = game.onMoveMade(x, y).getGameBoard();
                 view().subscribe(view -> {
                     if (view != null) {
                         view.showGameBoard(newGameBoard);
