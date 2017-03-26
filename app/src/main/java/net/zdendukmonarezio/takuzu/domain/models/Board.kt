@@ -40,6 +40,12 @@ interface Board {
      */
     fun validateFieldAmount(): Boolean
 
+
+    /**
+     * return true if all validate functions return true
+     */
+    fun validateAll(): Boolean
+
     /**
      * returns amount rows
      * TODO: discuss the usefulness of this function

@@ -56,6 +56,10 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
+    override fun validateAll(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     companion object GameBoard {
 
         /**
