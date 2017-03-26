@@ -57,7 +57,7 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
     }
 
     override fun validateAll(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return validateAdjacency() && validateColumnEquivalency() && validateRowEquivalency() && validateFieldAmount()
     }
 
     companion object GameBoard {
