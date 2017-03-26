@@ -33,7 +33,7 @@ public class GameBoardLayout extends GridLayout {
 
         for (int r = 0; r < gameBoard.rows(); r++) {
             for (int c = 0; c < gameBoard.columns(); c++) {
-                BoardFieldWidget field = new BoardFieldWidget(getContext(), gameBoard.fields().get(r).get(c), r, c);
+                BoardFieldWidget field = new BoardFieldWidget(getContext(), gameBoard.getFields().get(r).get(c), r, c);
                 addView(field);
             }
         }

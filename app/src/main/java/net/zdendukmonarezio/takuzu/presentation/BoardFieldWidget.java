@@ -12,7 +12,7 @@ import android.widget.GridLayout;
 import net.zdendukmonarezio.takuzu.R;
 import net.zdendukmonarezio.takuzu.domain.models.Field;
 
-public class BoardFieldWidget extends View{
+public class BoardFieldWidget extends View {
 
     private TextPaint textPaint;
     private Field gameField;
@@ -31,7 +31,7 @@ public class BoardFieldWidget extends View{
         setClickable(true);
         textPaint = new TextPaint();
         textPaint.setTextSize(40);
-        textPaint.setColor(gameField.player() == Player.ANON ? Color.BLACK : gameField.player() == Player.FIRST_PLAYER ? Color.RED : Color.BLUE);
+        textPaint.setColor(gameField == Field.ANON ? Color.BLACK : gameField == Field.BLUE ? Color.RED : Color.BLUE);
 
         int[] attrs = new int[]{R.attr.selectableItemBackground};
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs);
@@ -49,7 +49,6 @@ public class BoardFieldWidget extends View{
         param.rowSpec = GridLayout.spec(row);
         param.columnSpec = GridLayout.spec(column);
         setLayoutParams(param);
-
     }
 
 
@@ -59,7 +58,7 @@ public class BoardFieldWidget extends View{
 
         int width = getWidth();
         int height = getHeight();
-        canvas.drawText(gameField.getColor() + "", width / 2, height / 2, textPaint);
+        canvas.drawText("#", width / 2, height / 2, textPaint);
     }
 
     public int getRow() {
