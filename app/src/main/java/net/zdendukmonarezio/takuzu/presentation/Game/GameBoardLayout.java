@@ -1,6 +1,5 @@
-package net.zdendukmonarezio.takuzu.presentation;
+package net.zdendukmonarezio.takuzu.presentation.Game;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
@@ -8,7 +7,6 @@ import android.util.AttributeSet;
 import android.widget.GridLayout;
 
 import net.zdendukmonarezio.takuzu.domain.models.Board;
-import net.zdendukmonarezio.takuzu.domain.models.GameBoard;
 
 public class GameBoardLayout extends GridLayout {
 
@@ -26,7 +24,7 @@ public class GameBoardLayout extends GridLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public GameBoardLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
@@ -38,7 +36,6 @@ public class GameBoardLayout extends GridLayout {
 
         for (int r = 0; r < gameBoard.rows(); r++) {
             for (int c = 0; c < gameBoard.columns(); c++) {
-                System.out.println(gameBoard.getFields().get(r).get(c));
                 BoardFieldWidget field = new BoardFieldWidget(getContext(), gameBoard.getFields().get(r).get(c), r, c);
                 addView(field);
             }
@@ -54,17 +51,15 @@ public class GameBoardLayout extends GridLayout {
         setupFieldListeners(listener);
     }
 
-    public void setupFieldListeners(OnMoveListener listener) {
+    private void setupFieldListeners(OnMoveListener listener) {
         for (int i = 0; i < getChildCount(); i++) {
             BoardFieldWidget child = (BoardFieldWidget) getChildAt(i);
-            GridLayout.LayoutParams lp = (LayoutParams) child.getLayoutParams();
+            LayoutParams lp = (LayoutParams) child.getLayoutParams();
             child.setOnClickListener(v -> listener.onMoveMade(child.getRow(), child.getColumn()));
         }
     }
 
-    public interface OnMoveListener {
+    interface OnMoveListener {
         void onMoveMade(int x, int y);
     }
 }
-
-

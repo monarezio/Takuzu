@@ -3,19 +3,19 @@ package net.zdendukmonarezio.takuzu.presentation.Game;
 import android.os.Bundle;
 
 import net.zdendukmonarezio.takuzu.domain.Game;
-import net.zdendukmonarezio.takuzu.domain.Takuzu;
 import net.zdendukmonarezio.takuzu.domain.models.Board;
 
 import nucleus.presenter.RxPresenter;
 
-public class MainPresenter extends RxPresenter<MainView> {
+public class GamePresenter extends RxPresenter<GameView> {
 
     private Game game;
 
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        game = Game.createNew(4, 4);
+        game = Game.createNew(4,4);
+
         view().subscribe(view -> {
             if (view != null) {
                 view.showGameBoard(game.getGameBoard());

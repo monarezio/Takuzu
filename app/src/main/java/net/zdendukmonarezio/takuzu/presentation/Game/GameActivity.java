@@ -5,14 +5,14 @@ import android.widget.Toast;
 
 import net.zdendukmonarezio.takuzu.R;
 import net.zdendukmonarezio.takuzu.domain.models.Board;
-import net.zdendukmonarezio.takuzu.domain.models.GameBoard;
-import net.zdendukmonarezio.takuzu.presentation.GameBoardLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import nucleus.factory.RequiresPresenter;
 import nucleus.view.NucleusActivity;
 
-public class MainActivity extends NucleusActivity<MainPresenter> implements MainView {
+@RequiresPresenter(GamePresenter.class)
+public class GameActivity extends NucleusActivity<GamePresenter> implements GameView {
 
     @BindView(R.id.game_board_layout)
     GameBoardLayout gameBoardLayout;
@@ -34,5 +34,4 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
     public void warn(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
-
 }
