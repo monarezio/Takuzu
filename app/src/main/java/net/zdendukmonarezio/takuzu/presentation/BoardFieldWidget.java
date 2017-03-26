@@ -10,20 +10,21 @@ import android.view.View;
 import android.widget.GridLayout;
 
 import net.zdendukmonarezio.takuzu.R;
+import net.zdendukmonarezio.takuzu.domain.models.Field;
 
 public class BoardFieldWidget extends View{
 
     private TextPaint textPaint;
-    private GameField gameField;
+    private Field gameField;
     private int row;
     private int column;
 
-    public BoardFieldWidget(Context context, GameField gameField, int row, int column) {
+    public BoardFieldWidget(Context context, Field gameField, int row, int column) {
         super(context);
         init(gameField, row, column);
     }
 
-    private void init(GameField gameField, int row, int column) {
+    private void init(Field gameField, int row, int column) {
         this.gameField = gameField;
         this.row = row;
         this.column = column;
@@ -58,7 +59,7 @@ public class BoardFieldWidget extends View{
 
         int width = getWidth();
         int height = getHeight();
-        canvas.drawText(gameField.atomCount() + "", width / 2, height / 2, textPaint);
+        canvas.drawText(gameField.getColor() + "", width / 2, height / 2, textPaint);
     }
 
     public int getRow() {

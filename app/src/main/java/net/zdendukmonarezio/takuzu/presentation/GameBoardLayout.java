@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.GridLayout;
 
+import net.zdendukmonarezio.takuzu.domain.models.Board;
+
 public class GameBoardLayout extends GridLayout {
 
     private OnMoveListener listener;
@@ -24,7 +26,7 @@ public class GameBoardLayout extends GridLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public void setBoard(GameBoard gameBoard) {
+    public void setBoard(Board gameBoard) {
         removeAllViews();
         setRowCount(gameBoard.rows());
         setColumnCount(gameBoard.columns());

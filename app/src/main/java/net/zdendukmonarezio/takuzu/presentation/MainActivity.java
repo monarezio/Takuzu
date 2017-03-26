@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import net.zdendukmonarezio.takuzu.R;
+import net.zdendukmonarezio.takuzu.domain.models.Board;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,7 +25,7 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
     }
 
     @Override
-    public void showGameBoard(GameBoard gameBoard) {
+    public void showGameBoard(Board gameBoard) {
         gameBoardLayout.setBoard(gameBoard);
     }
 
