@@ -7,6 +7,23 @@ import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
  * Created by samuelkodytek on 06/03/2017.
  */
 class GameBoard private constructor(fields: List<List<Field>>, lockedFields: List<Pair<Int, Int>>): Board {
+
+    override fun validateRowEquivalency(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun validateColumnEquivalency(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun validateAdjacency(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun validateFieldAmount(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun rows(): Int = getFields().size
 
     override fun columns(): Int = getFields()[0].size
