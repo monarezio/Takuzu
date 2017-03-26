@@ -1,5 +1,6 @@
 package net.zdendukmonarezio.takuzu.domain.models
 
+import net.zdendukmonarezio.takuzu.domain.models.extensions.set
 import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
 
 /**
@@ -26,8 +27,7 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
      * returns a new Gameboard with the edited fields, sets the field even if its locked
      */
     private fun forceSet(x: Int, y: Int, field: Field): Board {
-        val editedFields = fields.mapIndexed { x, list ->
-            list.mapIndexed { y, field ->  field} } //TODO create a valid setter
+        val editedFields = fields.set(x, fields[x].set(y, field))
 
         return GameBoard(editedFields, lockedFields)
     }

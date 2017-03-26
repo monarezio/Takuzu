@@ -35,8 +35,8 @@ object ListUtil {
             val last = lockedFields.last()
             val first = last.first
             val second = last.second
-            val newFields = fields.set(first, fields[first].set(second, Field.BLUE))
-            syncFields(newFields, lockedFields.dropLast(1))
+            val newFields = fields.set(first, fields[first].set(second, FieldPickerUtil.getField()))
+            return syncFields(newFields, lockedFields.dropLast(1))
         }
 
         return fields
