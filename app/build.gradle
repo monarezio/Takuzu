@@ -42,8 +42,8 @@ plugins {
 }
 
 apply plugin: 'com.android.application'
+apply plugin: "kotlin-android"
 apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 25
