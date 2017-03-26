@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package net.zdendukmonarezio.takuzu.presentation;
 
 import android.support.v7.app.AppCompatActivity;
@@ -34,3 +35,10 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
     }
 
 }
+=======
+package net.zdendukmonarezio.takuzu.presentation;
+
+public class MainActivity {
+
+}
+>>>>>>> ae0b4c94be9536fa7b876b352a173756ced6e3ea
