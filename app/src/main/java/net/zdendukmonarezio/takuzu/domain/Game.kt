@@ -24,7 +24,7 @@ class Game private constructor(val board: Board) : Takuzu{
         return true
     }
 
-    companion object {
+    companion object Game{
         fun createNew(rows: Int, colums: Int) = Game(GameBoard.createBlankBoard(rows, colums))
     }
 }
