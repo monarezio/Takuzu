@@ -1,4 +1,4 @@
-package net.zdendukmonarezio.takuzu.presentation;
+package net.zdendukmonarezio.takuzu.presentation.Game;
 
 import android.os.Bundle;
 
@@ -10,7 +10,7 @@ import nucleus.presenter.RxPresenter;
 
 public class MainPresenter extends RxPresenter<MainView> {
 
-    private Takuzu game;
+    private Game game;
 
     @Override
     protected void onCreate(Bundle savedState) {

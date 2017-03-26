@@ -1,11 +1,12 @@
-package net.zdendukmonarezio.takuzu.presentation;
+package net.zdendukmonarezio.takuzu.presentation.Game;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
 import net.zdendukmonarezio.takuzu.R;
 import net.zdendukmonarezio.takuzu.domain.models.Board;
+import net.zdendukmonarezio.takuzu.domain.models.GameBoard;
+import net.zdendukmonarezio.takuzu.presentation.GameBoardLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

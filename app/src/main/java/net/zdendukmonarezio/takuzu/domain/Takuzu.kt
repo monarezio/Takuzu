@@ -2,6 +2,7 @@ package net.zdendukmonarezio.takuzu.domain
 
 import net.zdendukmonarezio.takuzu.domain.models.Board
 import net.zdendukmonarezio.takuzu.domain.models.Field
+import net.zdendukmonarezio.takuzu.domain.models.GameBoard
 
 /**
  * Created by samuelkodytek on 06/03/2017.

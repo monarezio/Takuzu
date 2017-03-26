@@ -1,10 +1,14 @@
 package net.zdendukmonarezio.takuzu.presentation;
 
+import android.annotation.TargetApi;
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.widget.GridLayout;
 
 import net.zdendukmonarezio.takuzu.domain.models.Board;
+import net.zdendukmonarezio.takuzu.domain.models.GameBoard;
 
 public class GameBoardLayout extends GridLayout {
 
@@ -22,6 +26,7 @@ public class GameBoardLayout extends GridLayout {
         super(context, attrs, defStyleAttr);
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public GameBoardLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
@@ -33,6 +38,7 @@ public class GameBoardLayout extends GridLayout {
 
         for (int r = 0; r < gameBoard.rows(); r++) {
             for (int c = 0; c < gameBoard.columns(); c++) {
+                System.out.println(gameBoard.getFields().get(r).get(c));
                 BoardFieldWidget field = new BoardFieldWidget(getContext(), gameBoard.getFields().get(r).get(c), r, c);
                 addView(field);
             }
