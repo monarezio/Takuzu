@@ -3,9 +3,9 @@ a game inspired by [Takuzu](https://en.wikipedia.org/wiki/Takuzu)
 
 ### TODO
 - [X] Create interfaces
-- [ ] Game logic
-- [ ] Game presentation
-- [ ] Create Gameboard Layout
+- [X] Game logic
+- [X] Game presentation
+- [X] Create Gameboard Layout
 
 ## How to play
  - there can be no identical rows or columns
