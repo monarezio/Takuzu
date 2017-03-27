@@ -11,9 +11,9 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
     private val lockedFields: List<Pair<Int, Int>> = lockedFields
     private val fields: List<List<Field>> = ListUtil.syncFields(fields, lockedFields)
 
-    private constructor(rows: Int, colums: Int): this(
-            List(rows) {List(colums) {Field.ANON}},
-            ListUtil.randomPairs(4, rows, colums) //TODO: how many locked pairs to generate?
+    private constructor(rows: Int, columns: Int): this(
+            List(rows) {List(columns) {Field.ANON}},
+            ListUtil.randomPairs(rows * columns / 4, rows, columns) //TODO: how many locked pairs to generate?
     )
 
     /**

@@ -11,11 +11,5 @@ import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
  * TODO: This file will be after deleted, its for me to try if things are working since the tests are weird
  */
 fun main(args: Array<String>) {
-    val pairs = ListUtil.randomPairs(4, 16, 16)
-    val list = List(16) {List(16) { Field.ANON}}
-
-    val newList = ListUtil.syncFields(list, pairs)
-
-    println(list)
-    print(newList)
+    print(Int.random(0, 2))
 }
