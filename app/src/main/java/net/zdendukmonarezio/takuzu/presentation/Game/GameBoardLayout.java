@@ -1,4 +1,4 @@
-package net.zdendukmonarezio.takuzu.presentation.Game;
+package net.zdendukmonarezio.takuzu.presentation.game;
 
 import android.content.Context;
 import android.os.Build;

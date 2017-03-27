@@ -8,14 +8,15 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_horizontal_margin"
-    tools:context="net.zdendukmonarezio.takuzu.presentation.Game.GameActivity">
+    android:background="@color/backgroudColor"
+    tools:context="net.zdendukmonarezio.takuzu.presentation.game.GameActivity">
 
-    <net.zdendukmonarezio.takuzu.presentation.Game.GameBoardLayout
+    <net.zdendukmonarezio.takuzu.presentation.game.GameBoardLayout
         android:id="@+id/game_board_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
 
-    </net.zdendukmonarezio.takuzu.presentation.Game.GameBoardLayout>
+    </net.zdendukmonarezio.takuzu.presentation.game.GameBoardLayout>
 
 </RelativeLayout>

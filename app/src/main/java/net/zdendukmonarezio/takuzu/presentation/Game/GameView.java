@@ -1,4 +1,4 @@
-package net.zdendukmonarezio.takuzu.presentation.Game;
+package net.zdendukmonarezio.takuzu.presentation.game;
 
 import net.zdendukmonarezio.takuzu.domain.models.Board;
 

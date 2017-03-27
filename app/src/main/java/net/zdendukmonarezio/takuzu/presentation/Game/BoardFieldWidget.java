@@ -1,10 +1,13 @@
-package net.zdendukmonarezio.takuzu.presentation.Game;
+package net.zdendukmonarezio.takuzu.presentation.game;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.res.ResourcesCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.GridLayout;
@@ -31,7 +34,8 @@ public class BoardFieldWidget extends View {
         setClickable(true);
 
         gridPaint = new Paint();
-        gridPaint.setColor(gameField == Field.ANON ? Color.BLACK : gameField == Field.BLUE ? Color.BLUE : Color.RED);
+        gridPaint.setColor(gameField == Field.ANON ? ContextCompat.getColor(getContext(), R.color.anonFieldColor) : gameField == Field.BLUE ?
+                ContextCompat.getColor(getContext(), R.color.blueFieldColor): ContextCompat.getColor(getContext(), R.color.redFieldColor));
 
         int[] attrs = new int[]{R.attr.selectableItemBackground};
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs);
@@ -52,7 +56,6 @@ public class BoardFieldWidget extends View {
 
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -60,7 +63,7 @@ public class BoardFieldWidget extends View {
         int width = getWidth();
         int height = getHeight();
 
-        canvas.drawRect(0, 0, width, height, gridPaint);
+        canvas.drawRoundRect(new RectF(10, 10, width, height), 50, 50, gridPaint);
     }
 
     public int getRow() {
