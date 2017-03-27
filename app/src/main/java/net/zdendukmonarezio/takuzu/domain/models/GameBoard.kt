@@ -8,8 +8,8 @@ import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
  */
 class GameBoard private constructor(fields: List<List<Field>>, lockedFields: List<Pair<Int, Int>>): Board {
 
-    private val fields: List<List<Field>> = fields
     private val lockedFields: List<Pair<Int, Int>> = lockedFields
+    private val fields: List<List<Field>> = ListUtil.syncFields(fields, lockedFields)
 
     private constructor(rows: Int, colums: Int): this(
             List(rows) {List(colums) {Field.ANON}},

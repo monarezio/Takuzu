@@ -41,4 +41,8 @@ object ListUtil {
 
         return fields
     }
+
+    fun createNewFields(rows: Int, columns: Int, lockedFields: List<Pair<Int, Int>>): List<List<Field>> {
+        return syncFields(List(rows) {List(columns) { Field.ANON}}, lockedFields)
+    }
 }
