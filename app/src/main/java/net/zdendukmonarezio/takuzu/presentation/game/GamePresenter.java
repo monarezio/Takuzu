@@ -3,13 +3,14 @@ package net.zdendukmonarezio.takuzu.presentation.game;
 import android.os.Bundle;
 
 import net.zdendukmonarezio.takuzu.domain.Game;
+import net.zdendukmonarezio.takuzu.domain.Takuzu;
 import net.zdendukmonarezio.takuzu.domain.models.Board;
 
 import nucleus.presenter.RxPresenter;
 
 public class GamePresenter extends RxPresenter<GameView> {
 
-    private Game game;
+    private Takuzu game;
 
     @Override
     protected void onCreate(Bundle savedState) {

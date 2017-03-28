@@ -18,4 +18,13 @@ object FieldPickerUtil {
         else
             return Field.RED
     }
+
+    /**
+     * returns a new field according to the field given in the argument
+     */
+    fun nextField(field: Field): Field {
+        if(field == Field.ANON) return Field.RED
+        else if((field == Field.RED)) return Field.BLUE
+        else return Field.ANON
+    }
 }
