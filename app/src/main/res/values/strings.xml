@@ -1,4 +1,13 @@
 <resources>
-    <string name="app_name">Takuzu</string>
     <string name="font">sans-serif-thin</string>
+
+    <string name="app_name">Takuzu</string>
+
+    <string name="main_button_more">...</string>
+    <string name="_32">32</string>
+    <string name="_16">16</string>
+    <string name="_8">8</string>
+    <string name="_6">6</string>
+    <string name="_4">4</string>
+    <string name="_12">12</string>
 </resources>

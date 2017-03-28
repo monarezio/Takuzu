@@ -34,7 +34,7 @@
         android:background="@drawable/rounded_button_red"
         android:fontFamily="@string/font"
         android:onClick="startGame4"
-        android:text="4"
+        android:text="@string/_4"
         android:textColor="@color/white"
         android:textSize="@dimen/loading_screen_button_text_size" />
 
@@ -48,7 +48,7 @@
         android:background="@drawable/rounded_button_blue"
         android:fontFamily="@string/font"
         android:onClick="startGame6"
-        android:text="6"
+        android:text="@string/_6"
         android:textColor="@color/white"
         android:textSize="@dimen/loading_screen_button_text_size" />
 
@@ -63,7 +63,7 @@
         android:background="@drawable/rounded_button_red"
         android:fontFamily="@string/font"
         android:onClick="startGame8"
-        android:text="8"
+        android:text="@string/_8"
         android:textColor="@color/white"
         android:textSize="@dimen/loading_screen_button_text_size" />
 
@@ -71,16 +71,16 @@
         android:id="@+id/button4"
         android:layout_width="@dimen/loading_screen_size"
         android:layout_height="@dimen/loading_screen_size"
-        android:background="@drawable/rounded_button_blue"
-        android:fontFamily="@string/font"
-        android:onClick="startGame16"
-        android:text="16"
-        android:textColor="@color/white"
-        android:textSize="@dimen/loading_screen_button_text_size"
-        android:layout_below="@+id/button"
         android:layout_alignLeft="@+id/button"
         android:layout_alignStart="@+id/button"
-        android:layout_marginTop="10dp" />
+        android:layout_below="@+id/button"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_button_blue"
+        android:fontFamily="@string/font"
+        android:onClick="startGame12"
+        android:text="@string/_12"
+        android:textColor="@color/white"
+        android:textSize="@dimen/loading_screen_button_text_size" />
 
     <Button
         android:id="@+id/button5"
@@ -92,8 +92,8 @@
         android:layout_alignTop="@+id/button4"
         android:background="@drawable/rounded_button_red"
         android:fontFamily="@string/font"
-        android:onClick="startGame32"
-        android:text="32"
+        android:onClick="startGame16"
+        android:text="@string/_16"
         android:textColor="@color/white"
         android:textSize="@dimen/loading_screen_button_text_size" />
 
@@ -106,8 +106,8 @@
         android:layout_alignTop="@+id/button5"
         android:background="@drawable/rounded_button_blue"
         android:fontFamily="@string/font"
-        android:onClick="startGame64"
-        android:text="64"
+        android:onClick="showAbout"
+        android:text="@string/main_button_more"
         android:textColor="@color/white"
         android:textSize="@dimen/loading_screen_button_text_size" />
 </RelativeLayout>
