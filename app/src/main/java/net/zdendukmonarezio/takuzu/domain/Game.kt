@@ -2,23 +2,20 @@ package net.zdendukmonarezio.takuzu.domain
 
 import net.zdendukmonarezio.takuzu.domain.models.Board
 import net.zdendukmonarezio.takuzu.domain.models.GameBoard
+import net.zdendukmonarezio.takuzu.domain.models.IllegalMoveException
 import net.zdendukmonarezio.takuzu.domain.models.extensions.set
 import net.zdendukmonarezio.takuzu.domain.models.utils.FieldPickerUtil
 
 /**
  * Created by samuelkodytek on 06/03/2017.
  */
-class Game private constructor(val board: Board) : Takuzu{
+class Game private constructor(val board: Board) : Takuzu {
 
     override fun onMoveMade(x: Int, y: Int): Takuzu {
-        val fields = board.getFields()
-        print("Test \n")
-        return createGame(
-                GameBoard.createBoard(
-                    fields.set(x, fields[x].set(y, FieldPickerUtil.nextField(fields[x][y]))),
-                    board.getLockedFields()
-                )
-        )
+        if(!isMovePossible(x, y))
+            throw IllegalMoveException("Illegal move at position [" + x + ";" + y + "]")
+
+        return createGame(board.set(x, y, FieldPickerUtil.nextField(board.getFields()[x][y])))
     }
 
     override fun getGameBoard(): Board {
@@ -26,7 +23,7 @@ class Game private constructor(val board: Board) : Takuzu{
     }
 
     override fun isMovePossible(x: Int, y: Int): Boolean {
-        return true
+        return !board.getLockedFields().contains(Pair(x, y))
     }
 
     override fun isGameOver(): Boolean {

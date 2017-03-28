@@ -1,6 +1,7 @@
 package net.zdendukmonarezio.takuzu.domain.models
 
 import net.zdendukmonarezio.takuzu.domain.models.extensions.set
+import net.zdendukmonarezio.takuzu.domain.models.utils.FieldPickerUtil
 import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
 
 /**
@@ -9,32 +10,25 @@ import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
 class GameBoard private constructor(fields: List<List<Field>>, lockedFields: List<Pair<Int, Int>>): Board {
 
     private val fields: List<List<Field>> = fields
-    private val lockedFields: List<Pair<Int, Int>> = ListUtil.returnLockedPairs(fields)
+    private val lockedFields: List<Pair<Int, Int>> = lockedFields
 
-    private constructor(rows: Int, columns: Int): this(
-            ListUtil.createNewFields(List(rows) {List(columns) {Field.ANON}}, rows * columns / 4),
-            listOf() //Pass empty list, it sets itself after
+    private constructor(fields: List<List<Field>>): this(
+            fields,
+            ListUtil.returnLockedPairs(fields)
     )
 
     /**
      * returns a new Gameboard with the edited fields, sets the field even if its locked
      */
-    private fun forceSet(x: Int, y: Int, field: Field): Board {
+    override fun set(x: Int, y: Int, field: Field): Board {
         val editedFields = fields.set(x, fields[x].set(y, field))
 
-        return GameBoard(editedFields, lockedFields)
+        return createBoard(editedFields, lockedFields)
     }
 
     override fun getFields(): List<List<Field>> = fields
 
     override fun getLockedFields(): List<Pair<Int, Int>> = lockedFields
-
-    override fun set(x: Int, y: Int, field: Field): Board {
-        if(lockedFields.contains(Pair(x, y)))
-            throw LockedFieldException("Position: [" + x + "; " + y + "], is locked")
-
-        return forceSet(x, y, field)
-    }
 
     override fun rows(): Int = getFields().size
 
@@ -65,7 +59,9 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
         /**
          * returns a new board with generated lockedFields
          */
-        fun createBlankBoard(rows: Int, colums: Int): Board = GameBoard(rows, colums)
+        fun createBlankBoard(rows: Int, columns: Int): Board = GameBoard(
+                ListUtil.createNewFields(List(rows) {List(rows) {Field.ANON}}, rows * columns / 4)
+            )
 
         fun createBoard(fields: List<List<Field>>, lockedFields: List<Pair<Int, Int>>): Board = GameBoard(fields, lockedFields)
     }
