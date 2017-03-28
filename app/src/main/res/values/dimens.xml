@@ -9,4 +9,6 @@
     <dimen name="loading_screen_button_text_size">32dp</dimen>
 
     <dimen name="round_corner_size">20dp</dimen>
+
+    <dimen name="field_margin">4dp</dimen>
 </resources>

@@ -21,13 +21,15 @@ public class BoardFieldWidget extends View {
     private Field gameField;
     private int row;
     private int column;
+    private int fieldWidth;
 
-    public BoardFieldWidget(Context context, Field gameField, int row, int column) {
+
+    public BoardFieldWidget(Context context, Field gameField, int row, int column, int fieldWidth) {
         super(context);
-        init(gameField, row, column);
+        init(gameField, row, column, fieldWidth);
     }
 
-    private void init(Field gameField, int row, int column) {
+    private void init(Field gameField, int row, int column, int fieldWidth) {
         this.gameField = gameField;
         this.row = row;
         this.column = column;
@@ -35,7 +37,7 @@ public class BoardFieldWidget extends View {
 
         gridPaint = new Paint();
         gridPaint.setColor(gameField == Field.ANON ? ContextCompat.getColor(getContext(), R.color.anonFieldColor) : gameField == Field.BLUE ?
-                ContextCompat.getColor(getContext(), R.color.blueFieldColor): ContextCompat.getColor(getContext(), R.color.redFieldColor));
+                ContextCompat.getColor(getContext(), R.color.blueFieldColor) : ContextCompat.getColor(getContext(), R.color.redFieldColor));
 
         int[] attrs = new int[]{R.attr.selectableItemBackground};
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs);
@@ -43,12 +45,12 @@ public class BoardFieldWidget extends View {
         setBackgroundResource(backgroundResource);
         typedArray.recycle();
 
-        float fieldSize = getResources().getDimension(R.dimen.field_size);
+        float fieldSize = fieldWidth;
         GridLayout.LayoutParams param = new GridLayout.LayoutParams();
         param.height = (int) fieldSize;
         param.width = (int) fieldSize;
-        param.rightMargin = 4;
-        param.topMargin = 4;
+        param.rightMargin = (int) getResources().getDimension(R.dimen.field_margin);
+        param.topMargin = (int) getResources().getDimension(R.dimen.field_margin);
         param.setGravity(Gravity.CENTER);
         param.rowSpec = GridLayout.spec(row);
         param.columnSpec = GridLayout.spec(column);

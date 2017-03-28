@@ -1,5 +1,6 @@
 package net.zdendukmonarezio.takuzu.presentation.game;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import net.zdendukmonarezio.takuzu.domain.Game;
@@ -12,17 +13,13 @@ public class GamePresenter extends RxPresenter<GameView> {
 
     private Takuzu game;
 
+    private int gameSize;
+
     @Override
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
-        game = Game.createNew(5,5);
-
-        view().subscribe(view -> {
-            if (view != null) {
-                view.showGameBoard(game.getGameBoard());
-            }
-        });
     }
+
 
     public void onMoveMade(int x, int y) {
         if (!game.isGameOver()) {
@@ -31,7 +28,7 @@ public class GamePresenter extends RxPresenter<GameView> {
                 Board newGameBoard = game.getGameBoard();
                 view().subscribe(view -> {
                     if (view != null) {
-                        view.showGameBoard(newGameBoard);
+                        view.showGameBoard(newGameBoard, gameSize);
                     }
                 });
                 if (game.isGameOver()) {
@@ -49,5 +46,18 @@ public class GamePresenter extends RxPresenter<GameView> {
                 });
             }
         }
+    }
+
+    public void setGameSize(int gameSize) {
+        this.gameSize = gameSize;
+    }
+
+    public void setupGame() {
+        game = Game.createNew(gameSize, gameSize);
+        view().subscribe(view -> {
+            if (view != null) {
+                view.showGameBoard(game.getGameBoard(), gameSize);
+            }
+        });
     }
 }

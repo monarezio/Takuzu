@@ -38,9 +38,9 @@ public class MainActivity extends Activity {
         start(64);
     }
 
-    private void start(int gameType) {
+    private void start(int gameSize) {
         Intent intent = new Intent(this, GameActivity.class);
-        intent.putExtra("Type", gameType);
+        intent.putExtra("gameSize", gameSize);
         startActivity(intent);
     }
 }

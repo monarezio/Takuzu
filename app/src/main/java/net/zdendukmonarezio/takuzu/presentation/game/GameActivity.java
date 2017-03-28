@@ -22,12 +22,17 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         ButterKnife.bind(this);
-        gameBoardLayout.setOnMoveListener((x, y) -> getPresenter().onMoveMade(x, y));
+        int gameSize = getIntent().getIntExtra("gameSize", 4);
+
+        GamePresenter presenter = getPresenter();
+        presenter.setGameSize(gameSize);
+        presenter.setupGame();
+        gameBoardLayout.setOnMoveListener((x, y) -> presenter.onMoveMade(x, y));
     }
 
     @Override
-    public void showGameBoard(Board gameBoard) {
-        gameBoardLayout.setBoard(gameBoard);
+    public void showGameBoard(Board gameBoard, int gameSize) {
+        gameBoardLayout.setBoard(gameBoard, gameSize);
     }
 
     @Override
