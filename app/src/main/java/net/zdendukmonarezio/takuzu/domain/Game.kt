@@ -1,7 +1,6 @@
 package net.zdendukmonarezio.takuzu.domain
 
 import net.zdendukmonarezio.takuzu.domain.models.Board
-import net.zdendukmonarezio.takuzu.domain.models.Field
 import net.zdendukmonarezio.takuzu.domain.models.GameBoard
 import net.zdendukmonarezio.takuzu.domain.models.extensions.set
 import net.zdendukmonarezio.takuzu.domain.models.utils.FieldPickerUtil
@@ -13,6 +12,7 @@ class Game private constructor(val board: Board) : Takuzu{
 
     override fun onMoveMade(x: Int, y: Int): Takuzu {
         val fields = board.getFields()
+        print("Test \n")
         return createGame(
                 GameBoard.createBoard(
                     fields.set(x, fields[x].set(y, FieldPickerUtil.nextField(fields[x][y]))),
@@ -30,7 +30,7 @@ class Game private constructor(val board: Board) : Takuzu{
     }
 
     override fun isGameOver(): Boolean {
-        return true
+        return false
     }
 
     companion object Game {

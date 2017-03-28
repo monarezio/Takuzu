@@ -27,7 +27,8 @@ public class GamePresenter extends RxPresenter<GameView> {
     public void onMoveMade(int x, int y) {
         if (!game.isGameOver()) {
             if (game.isMovePossible(x, y)) {
-                Board newGameBoard = game.onMoveMade(x, y).getGameBoard();
+                game = game.onMoveMade(x, y);
+                Board newGameBoard = game.getGameBoard();
                 view().subscribe(view -> {
                     if (view != null) {
                         view.showGameBoard(newGameBoard);
