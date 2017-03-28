@@ -8,12 +8,12 @@ import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
  */
 class GameBoard private constructor(fields: List<List<Field>>, lockedFields: List<Pair<Int, Int>>): Board {
 
-    private val lockedFields: List<Pair<Int, Int>> = lockedFields
-    private val fields: List<List<Field>> = ListUtil.syncFields(fields, lockedFields)
+    private val fields: List<List<Field>> = fields
+    private val lockedFields: List<Pair<Int, Int>> = ListUtil.returnLockedPairs(fields)
 
     private constructor(rows: Int, columns: Int): this(
-            List(rows) {List(columns) {Field.ANON}},
-            ListUtil.randomPairs(rows * columns / 4, rows, columns) //TODO: how many locked pairs to generate?
+            ListUtil.createNewFields(List(rows) {List(columns) {Field.ANON}}, rows * columns / 4),
+            listOf() //Pass empty list, it sets itself after
     )
 
     /**
@@ -66,5 +66,7 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
          * returns a new board with generated lockedFields
          */
         fun createBlankBoard(rows: Int, colums: Int): Board = GameBoard(rows, colums)
+
+        fun createBoard(fields: List<List<Field>>, lockedFields: List<Pair<Int, Int>>): Board = GameBoard(fields, lockedFields)
     }
 }
