@@ -6,7 +6,8 @@ a game inspired by [Takuzu](https://en.wikipedia.org/wiki/Takuzu)
 - [X] Mock data
 - [ ] Game logic
 - [ ] Game presentation
-- [X] Create Gameboard Layout
+- [X] Game graphics
+- [X] Create Gameboard layout
 
 ## How to play
  - there can be no identical rows or columns
