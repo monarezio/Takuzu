@@ -66,36 +66,14 @@ class GameBoardTest {
 
     @Test
     fun validateFieldAmount() {
-
-    }
-
-    /*
-    //Is commented out because the functions are private in the class
-    TODO: ask VALENTA WTF IS THIS SHIT XD
-    @Test
-    fun validateRowAdjacency() {
         val gameBoard = GameBoard.createBoard(listOf(
-                listOf(Field.BLUE, Field.BLUE, Field.ANON, Field.ANON),
-                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
-                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
-                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
-        ), listOf()) as GameBoard
-        assertTrue(gameBoard.validateRowAdjacency())
-        val newGameBoard = gameBoard.set(0, 2, Field.BLUE) as GameBoard
-        assertFalse(newGameBoard.validateRowAdjacency())
+                listOf(Field.BLUE, Field.BLUE, Field.RED, Field.RED),
+                listOf(Field.RED, Field.RED, Field.BLUE, Field.BLUE),
+                listOf(Field.BLUE, Field.RED, Field.RED, Field.BLUE),
+                listOf(Field.RED, Field.BLUE, Field.BLUE, Field.RED)
+        ), listOf())
+        assertTrue(gameBoard.validateAll())
+        val newGameBoard = gameBoard.set(0, 0, Field.RED)
+        assertFalse(newGameBoard.validateAll())
     }
-
-    @Test
-    fun validateColumnAdjacency() {
-        val gameBoard = GameBoard.createBoard(listOf(
-                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
-                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
-                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
-                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
-        ), listOf()) as GameBoard
-        assertTrue(gameBoard.validateColumnAdjacency())
-        val newGameBoard = gameBoard.set(2, 0, Field.BLUE) as GameBoard
-        assertFalse(newGameBoard.validateColumnAdjacency())
-    }*/
-
 }

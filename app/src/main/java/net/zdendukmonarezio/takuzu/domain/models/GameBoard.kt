@@ -8,7 +8,6 @@ import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
  * Created by samuelkodytek on 06/03/2017.
  */
 class GameBoard private constructor(fields: List<List<Field>>, lockedFields: List<Pair<Int, Int>>): Board {
-
     private val fields: List<List<Field>> = fields
     private val lockedFields: List<Pair<Int, Int>> = lockedFields
 
@@ -90,8 +89,35 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
         return validateRowEquivalency() && validateColumnEquivalency()
     }
 
+    private fun validateRowsColorAmount(): Boolean {
+        for(i in 0..rows() - 1) {
+            if(fields[i].filter { i -> i != Field.BLUE }.size != fields[i].filter { i -> i != Field.RED }.size)
+                return false
+        }
+
+        return true
+    }
+
+    private fun validateColumnsColorAmount(): Boolean {
+        for(i in 0..columns() - 1) {
+            val col = fields.map { list -> list[i] }
+            if(col.filter { i -> i != Field.BLUE }.size != col.filter { i -> i != Field.RED }.size)
+                return false
+        }
+
+        return true
+    }
+
+    override fun validateColorAmount(): Boolean {
+        return validateColumnsColorAmount() && validateRowAdjacency()
+    }
+
     override fun validateAll(): Boolean {
-        return validateAdjacency() && validateColumnEquivalency() && validateRowEquivalency() && validateFieldAmount()
+        return validateAdjacency()
+                && validateColumnEquivalency()
+                && validateRowEquivalency()
+                && validateFieldAmount()
+                && validateColorAmount()
     }
 
     companion object GameBoard {

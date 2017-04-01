@@ -31,6 +31,11 @@ interface Board {
     fun validateColumnEquivalency() : Boolean
 
     /**
+     * returns true if columns and rows have an equal number of each color
+     */
+    fun validateColorAmount(): Boolean
+
+    /**
      * return true if there are less then two of the same field adjacent
      */
     fun validateAdjacency(): Boolean
