@@ -16,4 +16,14 @@ class ListKtTest {
         assertEquals(newList[2], 100)
         assert(newList[3] != 100)
     }
+
+    @Test
+    fun isSame() {
+        val list1 = listOf("Hello", "My name is", "John")
+        val list2 = listOf("Hello", "My name is", "John")
+
+        assertTrue(list1 == (list2))
+        val list3 = list2.set(1, "Lol")
+        assertFalse(list1 == (list3))
+    }
 }

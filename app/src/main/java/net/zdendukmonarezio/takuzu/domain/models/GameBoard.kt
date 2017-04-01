@@ -35,19 +35,59 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
     override fun columns(): Int = getFields()[0].size
 
     override fun validateRowEquivalency(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        for(i in 0..rows()-1) {
+            val first = fields[i]
+            for(j in 0..rows()-1) {
+                if(i != j && first == fields[j] && (first.contains(Field.BLUE) || first.contains(Field.RED)))
+                    return false
+            }
+        }
+
+        return true
     }
 
     override fun validateColumnEquivalency(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        for(i in 0..columns()-1) {
+            val first = fields.map { k -> k[i] } //Tranforming into column
+            for (j in 0..columns()-1) {
+                val second = fields.map { k -> k[j] }
+                if(i != j && first == second && (first.contains(Field.BLUE) || first.contains(Field.RED)))
+                    return false
+            }
+        }
+
+        return true
+    }
+
+    private fun validateRowAdjacency(): Boolean {
+        for(i in 0..rows()-1) {
+            for(j in 0..rows()-3) {
+                if(fields[i][j] != Field.ANON && (fields[i][j] == fields[i][j+1] && fields[i][j+1] == fields[i][j+2] ))
+                    return false
+            }
+        }
+
+        return true
+    }
+
+    private fun validateColumnAdjacency(): Boolean {
+        for(i in 0..columns()-1) {
+            val col = fields.map { k -> k[i] } //Tranforming into column
+            for(j in 0..columns()-3) {
+                if(col[j] != Field.ANON && (col[j] == col[j+1] && col[j+1] == col[j+2] ))
+                    return false
+            }
+        }
+
+        return true
     }
 
     override fun validateAdjacency(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return validateColumnAdjacency() && validateRowAdjacency()
     }
 
     override fun validateFieldAmount(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        return validateRowEquivalency() && validateColumnEquivalency()
     }
 
     override fun validateAll(): Boolean {

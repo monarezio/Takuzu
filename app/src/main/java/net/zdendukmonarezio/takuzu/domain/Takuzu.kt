@@ -28,4 +28,9 @@ interface Takuzu {
      * check if game is over
      */
     fun isGameOver(): Boolean
+
+    /**
+     * returns the coordinates of incorrect fields
+     */
+    fun getWrongFields(): List<Pair<Int, Int>>
 }

@@ -16,8 +16,86 @@ class GameBoardTest {
         val pair = Pair(10, 10)
         if(lockedFields.contains(pair)) {
             val newGameBoard = gameBoard.set(10, 10, Field.BLUE)
-            assert(newGameBoard.getFields()[10][11] == Field.BLUE)
+            assertTrue(newGameBoard.getFields()[10][10] == Field.BLUE)
         }
     }
+
+    @Test
+    fun validateRowEquivalency() {
+        val gameBoard = GameBoard.createBoard(listOf(
+                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+        ), listOf())
+
+        assertFalse(gameBoard.validateRowEquivalency())
+        val newGameBoard = gameBoard.set(1, 1, Field.BLUE)
+        assertTrue(newGameBoard.validateRowEquivalency())
+
+    }
+
+    @Test
+    fun validateColumnEquivalency() {
+        val gameBoard = GameBoard.createBoard(listOf(
+                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+        ), listOf())
+
+        assertTrue(gameBoard.validateColumnEquivalency())
+        val newGameBoard = gameBoard.set(0, 1, Field.BLUE)
+        assertFalse(newGameBoard.validateColumnEquivalency())
+    }
+
+    @Test
+    fun validateAdjacency() {
+        val gameBoard = GameBoard.createBoard(listOf(
+                listOf(Field.BLUE, Field.BLUE, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+        ), listOf())
+        assertTrue(gameBoard.validateAdjacency())
+        val newGameBoard = gameBoard.set(0, 2, Field.BLUE)
+        assertFalse(newGameBoard.validateAdjacency())
+        val newGameBoard2 = gameBoard.set(1, 0, Field.BLUE).set(2, 0, Field.BLUE)
+        assertFalse(newGameBoard2.validateAdjacency())
+    }
+
+    @Test
+    fun validateFieldAmount() {
+
+    }
+
+    /*
+    //Is commented out because the functions are private in the class
+    TODO: ask VALENTA WTF IS THIS SHIT XD
+    @Test
+    fun validateRowAdjacency() {
+        val gameBoard = GameBoard.createBoard(listOf(
+                listOf(Field.BLUE, Field.BLUE, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+        ), listOf()) as GameBoard
+        assertTrue(gameBoard.validateRowAdjacency())
+        val newGameBoard = gameBoard.set(0, 2, Field.BLUE) as GameBoard
+        assertFalse(newGameBoard.validateRowAdjacency())
+    }
+
+    @Test
+    fun validateColumnAdjacency() {
+        val gameBoard = GameBoard.createBoard(listOf(
+                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+        ), listOf()) as GameBoard
+        assertTrue(gameBoard.validateColumnAdjacency())
+        val newGameBoard = gameBoard.set(2, 0, Field.BLUE) as GameBoard
+        assertFalse(newGameBoard.validateColumnAdjacency())
+    }*/
 
 }

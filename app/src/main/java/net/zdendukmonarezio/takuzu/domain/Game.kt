@@ -30,6 +30,10 @@ class Game private constructor(val board: Board) : Takuzu {
         return false
     }
 
+    override fun getWrongFields(): List<Pair<Int, Int>> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     companion object Game {
         @JvmStatic fun createNew(rows: Int, colums: Int): Takuzu = Game(GameBoard.createBlankBoard(rows, colums))
 

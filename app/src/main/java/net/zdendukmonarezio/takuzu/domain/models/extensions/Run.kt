@@ -11,5 +11,15 @@ import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
  * TODO: This file will be after deleted, its for me to try if things are working since the tests are weird
  */
 fun main(args: Array<String>) {
-    print(Int.random(0, 2))
+    val fields = listOf(
+            listOf(Field.RED, Field.ANON, Field.ANON, Field.ANON),
+            listOf(Field.RED, Field.ANON, Field.ANON, Field.ANON),
+            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+    )
+
+    val col = fields.map { j -> j[0] }
+
+    print(col)
+
 }
