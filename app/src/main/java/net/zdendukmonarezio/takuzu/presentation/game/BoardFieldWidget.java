@@ -39,6 +39,32 @@ public class BoardFieldWidget extends View {
         gridPaint.setColor(gameField == Field.ANON ? ContextCompat.getColor(getContext(), R.color.anonFieldColor) : gameField == Field.BLUE ?
                 ContextCompat.getColor(getContext(), R.color.blueFieldColor) : ContextCompat.getColor(getContext(), R.color.redFieldColor));
 
+        /*
+                            ____
+                          .'* *.'
+                       __/_*_*(_
+                      / _______ \
+                     _\_)/___\(_/_
+                    / _((\- -/))_ \
+                    \ \())(-)(()/ /
+                     ' \(((()))/ '
+                    / ' \)).))/ ' \     THIS WIZARD MAKES ALL THE COOL STUFF HAPPEN.
+                   / _ \ - | - /_  \    NO ONE KNOWS WHY IT WORKS BUT IT WORKS.
+                  (   ( .;''';. .'  )   DO NOT TOUCH.
+                  _\"__ /    )\ __"/_
+                    \/  \   ' /  \/
+                     .'  '...' ' )
+                      / /  |  \ \
+                     / .   .   . \
+                    /   .     .   \
+                   /   /   |   \   \
+                 .'   /    b    '.  '.
+             _.-'    /     Bb     '-. '-._
+         _.-'       |      BBb       '-.  '-.
+        (________mrf\____.dBBBb.________)____)
+
+      */
+
         int[] attrs = new int[]{R.attr.selectableItemBackground};
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs);
         int backgroundResource = typedArray.getResourceId(0, 0);

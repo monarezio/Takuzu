@@ -11,4 +11,13 @@
     android:paddingTop="@dimen/activity_horizontal_margin"
     tools:context="net.zdendukmonarezio.takuzu.presentation.results.ResultsActivity">
 
+    <Button
+        android:id="@+id/button8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="116dp"
+        android:onClick="backToMainMenu"
+        android:text="back to main menu" />
 </RelativeLayout>

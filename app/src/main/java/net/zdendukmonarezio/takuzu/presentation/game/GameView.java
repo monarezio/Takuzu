@@ -11,9 +11,19 @@ import kotlin.Pair;
 public interface GameView {
     void showGameBoard(Board gameBoard, int gameSize);
 
-    void goToResults();
+    /*
+     *  goes to result screen and puts score as an extra
+     *  score = game size^2
+     */
+    void goToResults(int score);
 
+    /*
+     *  makes a toast with message in parameter
+     */
     void warn(String message);
 
+    /*
+     *  highlights wrong fields with white outline
+     */
     void highlightWrongFields(List<Pair<Integer, Integer>> pairs);
 }

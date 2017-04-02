@@ -110,4 +110,16 @@
         android:text="@string/main_button_more"
         android:textColor="@color/white"
         android:textSize="@dimen/loading_screen_button_text_size" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score 0"
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/button5"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/loading_screen_button_text_size"
+        android:fontFamily="@string/font"
+        android:textColor="@color/white"/>
 </RelativeLayout>

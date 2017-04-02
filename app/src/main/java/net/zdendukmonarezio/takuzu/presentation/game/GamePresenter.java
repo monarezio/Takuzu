@@ -38,7 +38,7 @@ public class GamePresenter extends Presenter<GameView> {
                 });
                 if (game.isGameOver()) {
                     viewIfExists().subscribe(view -> {
-                        view.goToResults();
+                        view.goToResults(gameSize*gameSize);
                     });
                 }
             } else {
@@ -61,7 +61,7 @@ public class GamePresenter extends Presenter<GameView> {
         });
     }
 
-    public void resetGame(){
+    public void resetGame() {
         game = newGameState;
         viewIfExists().subscribe(view -> {
             view.showGameBoard(game.getGameBoard(), gameSize);

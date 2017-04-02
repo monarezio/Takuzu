@@ -1,23 +1,34 @@
 package net.zdendukmonarezio.takuzu.presentation.main;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import net.zdendukmonarezio.takuzu.R;
 import net.zdendukmonarezio.takuzu.presentation.about.AboutActivity;
 import net.zdendukmonarezio.takuzu.presentation.game.GameActivity;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import nucleus.factory.RequiresPresenter;
+import nucleus.view.NucleusActivity;
 
-public class MainActivity extends Activity {
+
+@RequiresPresenter(MainPresenter.class)
+public class MainActivity extends NucleusActivity<MainPresenter> implements MainView {
+
+    @BindView(R.id.score)
+    TextView scoreTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        getPresenter().setScoreText();
     }
 
     public void startGame4(View view) {
@@ -51,4 +62,19 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    @Override
+    public void updateScore() {
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            SharedPreferences preferences = this.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
+            int score = preferences.getInt("highscore", 0);
+
+            int newScore = intent.getIntExtra("score", 0);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("highscore", newScore + score);
+            editor.commit();
+            scoreTextView.setText("Score " + (newScore + score));
+        }
+    }
 }

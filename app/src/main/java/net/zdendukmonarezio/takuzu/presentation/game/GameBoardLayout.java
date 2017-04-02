@@ -57,7 +57,6 @@ public class GameBoardLayout extends GridLayout {
         Point size = new Point();
         display.getSize(size);
         int wWidth = size.x;
-        System.out.println(wWidth);
         return ((wWidth - getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin) * 2) - (gameSize - 1) * getResources().getDimensionPixelSize(R.dimen.field_margin)) / gameSize;
     }
 

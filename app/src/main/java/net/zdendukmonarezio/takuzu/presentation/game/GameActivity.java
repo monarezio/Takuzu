@@ -48,12 +48,13 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
 
     @Override
     public void highlightWrongFields(List<Pair<Integer, Integer>> pairs) {
-        // TODO // FIXME: 02.04.2017
+        // TODO
     }
 
     @Override
-    public void goToResults() {
+    public void goToResults(int score) {
         Intent intent = new Intent(this, ResultsActivity.class);
+        intent.putExtra("score", score);
         startActivity(intent);
     }
 
