@@ -6,10 +6,9 @@ import android.os.Bundle;
 import net.zdendukmonarezio.takuzu.domain.Game;
 import net.zdendukmonarezio.takuzu.domain.Takuzu;
 import net.zdendukmonarezio.takuzu.domain.models.Board;
+import net.zdendukmonarezio.takuzu.presentation.Presenter;
 
-import nucleus.presenter.RxPresenter;
-
-public class GamePresenter extends RxPresenter<GameView> {
+public class GamePresenter extends Presenter<GameView> {
 
     private Takuzu game;
 
@@ -26,23 +25,17 @@ public class GamePresenter extends RxPresenter<GameView> {
             if (game.isMovePossible(x, y)) {
                 game = game.onMoveMade(x, y);
                 Board newGameBoard = game.getGameBoard();
-                view().subscribe(view -> {
-                    if (view != null) {
-                        view.showGameBoard(newGameBoard, gameSize);
-                    }
+                viewIfExists().subscribe(view -> {
+                    view.showGameBoard(newGameBoard, gameSize);
                 });
                 if (game.isGameOver()) {
-                    view().subscribe(view -> {
-                        if (view != null) {
-                            /* do something */
-                        }
+                    viewIfExists().subscribe(view -> {
+                        view.goToResults();
                     });
                 }
             } else {
-                view().subscribe(view -> {
-                    if (view != null) {
-                        view.warn("Unable to make move");
-                    }
+                viewIfExists().subscribe(view -> {
+                    view.warn("Unable to make move");
                 });
             }
         }
@@ -54,10 +47,8 @@ public class GamePresenter extends RxPresenter<GameView> {
 
     public void setupGame() {
         game = Game.createNew(gameSize, gameSize);
-        view().subscribe(view -> {
-            if (view != null) {
-                view.showGameBoard(game.getGameBoard(), gameSize);
-            }
+        viewIfExists().subscribe(view -> {
+            view.showGameBoard(game.getGameBoard(), gameSize);
         });
     }
 }

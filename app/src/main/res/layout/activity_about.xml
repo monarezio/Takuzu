@@ -11,4 +11,39 @@
     android:paddingTop="@dimen/activity_horizontal_margin"
     tools:context="net.zdendukmonarezio.takuzu.presentation.about.AboutActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="123dp"
+        android:fontFamily="@string/font"
+        android:text="Game created by:"
+        android:textColor="@color/white"
+        android:textSize="@dimen/about_text_size"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@string/font"
+        android:text="@string/zdenek_david"
+        android:textColor="@color/white"
+        android:textSize="@dimen/about_text_size"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:fontFamily="@string/font"
+        android:text="@string/samuel_kodytek"
+        android:textColor="@color/white"
+        android:textSize="@dimen/about_text_size"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
