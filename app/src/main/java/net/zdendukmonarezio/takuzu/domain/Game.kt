@@ -27,10 +27,10 @@ class Game private constructor(val board: Board) : Takuzu {
     }
 
     override fun isGameOver(): Boolean {
-        return false
+        return board.validateAll()
     }
 
-    override fun getWrongFields(): List<Pair<Int, Int>> {
+    override fun getWrongFields(): List<Pair<Int, Int>> { //Not needed now
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

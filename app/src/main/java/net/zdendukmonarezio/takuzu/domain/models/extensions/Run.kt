@@ -12,13 +12,13 @@ import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
  */
 fun main(args: Array<String>) {
     val fields = listOf(
-            listOf(Field.RED, Field.ANON, Field.ANON, Field.ANON),
-            listOf(Field.RED, Field.ANON, Field.ANON, Field.ANON),
-            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
-            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+            listOf(Field.RED, Field.RED, Field.BLUE, Field.RED),
+            listOf(Field.RED, Field.RED, Field.BLUE, Field.RED),
+            listOf(Field.RED, Field.RED, Field.BLUE, Field.RED),
+            listOf(Field.RED, Field.RED, Field.BLUE, Field.RED)
     )
 
-    val col = fields.map { j -> j[0] }
+    val col = fields.map { i -> i.contains(Field.ANON) }.contains(false)
 
     print(col)
 

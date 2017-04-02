@@ -108,12 +108,20 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
         return true
     }
 
+    /**
+     * returns true if fields dont contain Field.ANON
+     */
+    private fun isFilledIn(): Boolean {
+        return fields.map { i -> i.contains(Field.ANON) }.contains(false)
+    }
+
     override fun validateColorAmount(): Boolean {
         return validateColumnsColorAmount() && validateRowAdjacency()
     }
 
     override fun validateAll(): Boolean {
-        return validateAdjacency()
+        return isFilledIn()
+                && validateAdjacency()
                 && validateColumnEquivalency()
                 && validateRowEquivalency()
                 && validateFieldAmount()
