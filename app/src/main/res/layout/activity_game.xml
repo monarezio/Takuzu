@@ -24,10 +24,28 @@
         android:layout_width="@dimen/loading_screen_size"
         android:layout_height="@dimen/loading_screen_size"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_toEndOf="@+id/game_board_layout"
+        android:layout_toRightOf="@+id/game_board_layout"
         android:background="@color/backgroudColor"
+        android:fontFamily="@string/font"
         android:onClick="resetBoard"
         android:text="reset"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:id="@+id/percent_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button7"
+        android:layout_alignBottom="@+id/button7"
+        android:layout_marginEnd="37dp"
+        android:layout_marginRight="37dp"
+        android:layout_toLeftOf="@+id/button7"
+        android:layout_toStartOf="@+id/button7"
+        android:fontFamily="@string/font"
+        android:text="@string/_0percent"
         android:textColor="@color/white" />
 
 </RelativeLayout>

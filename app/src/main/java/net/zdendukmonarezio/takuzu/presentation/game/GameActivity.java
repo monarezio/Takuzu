@@ -3,6 +3,7 @@ package net.zdendukmonarezio.takuzu.presentation.game;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import net.zdendukmonarezio.takuzu.R;
@@ -22,6 +23,9 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
 
     @BindView(R.id.game_board_layout)
     GameBoardLayout gameBoardLayout;
+
+    @BindView(R.id.percent_counter)
+    TextView percentCounter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,11 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
     @Override
     public void highlightWrongFields(List<Pair<Integer, Integer>> pairs) {
         // TODO
+    }
+
+    @Override
+    public void updatePercentStatus(int percent) {
+        percentCounter.setText(percent + "%");
     }
 
     @Override

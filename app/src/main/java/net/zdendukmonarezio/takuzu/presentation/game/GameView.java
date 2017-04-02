@@ -26,4 +26,6 @@ public interface GameView {
      *  highlights wrong fields with white outline
      */
     void highlightWrongFields(List<Pair<Integer, Integer>> pairs);
+
+    void updatePercentStatus(int percent);
 }
