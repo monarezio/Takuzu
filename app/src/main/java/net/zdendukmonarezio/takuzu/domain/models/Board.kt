@@ -21,6 +21,11 @@ interface Board {
     fun set(x: Int, y: Int, field: Field): Board
 
     /**
+     * returns a percentage that is filled in
+     */
+    fun getProgress(): Int
+
+    /**
      * returns true if there are no rows that are the same
      */
     fun validateRowEquivalency() : Boolean

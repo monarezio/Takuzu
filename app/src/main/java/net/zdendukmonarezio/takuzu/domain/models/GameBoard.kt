@@ -25,6 +25,16 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
         return createBoard(editedFields, lockedFields)
     }
 
+    override fun getProgress(): Int {
+        val locked = lockedFields.size
+        val sum = fields.map { i -> i.size }.sum() - locked
+        val colored = fields.map { i -> i.filter { j -> j != Field.ANON }.size }.sum() - locked
+
+        if(colored <= 0) return 0
+
+        return (sum / colored * 100).toInt()
+    }
+
     override fun getFields(): List<List<Field>> = fields
 
     override fun getLockedFields(): List<Pair<Int, Int>> = lockedFields

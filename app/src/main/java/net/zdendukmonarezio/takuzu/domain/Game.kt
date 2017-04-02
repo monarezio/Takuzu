@@ -33,7 +33,7 @@ class Game private constructor(val board: Board) : Takuzu {
         return board.validateAll()
     }
 
-    override fun getWrongFields(): List<Pair<Int, Int>> { //Not needed now
+    override fun getWrongFields(): List<Pair<Int, Int>> { //TODO: Not needed for now
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 

@@ -76,4 +76,30 @@ class GameBoardTest {
         val newGameBoard = gameBoard.set(0, 0, Field.RED)
         assertFalse(newGameBoard.validateAll())
     }
+
+    @Test
+    fun getProgress() {
+        val gameBoard = GameBoard.createBoard(listOf(
+                listOf(Field.BLUE, Field.BLUE, Field.RED, Field.RED),
+                listOf(Field.RED, Field.RED, Field.BLUE, Field.BLUE),
+                listOf(Field.BLUE, Field.RED, Field.RED, Field.BLUE),
+                listOf(Field.RED, Field.BLUE, Field.BLUE, Field.RED)
+        ), listOf())
+        assertTrue(gameBoard.getProgress() == 100)
+        val gameBoard2 = GameBoard.createBoard(listOf(
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+        ), listOf())
+        assertTrue(gameBoard2.getProgress() == 0)
+        val gameBoard3 = GameBoard.createBoard(listOf(
+                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON)
+        ), listOf())
+        println(gameBoard3.getProgress())
+        assertTrue(gameBoard3.getProgress() == 25)
+    }
 }

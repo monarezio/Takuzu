@@ -35,7 +35,7 @@ public class GamePresenter extends Presenter<GameView> {
                 Board newGameBoard = game.getGameBoard();
                 viewIfExists().subscribe(view -> {
                     view.showGameBoard(newGameBoard, gameSize);
-                    view.updatePercentStatus(game.getFilledFields());
+                    view.updatePercentStatus(game.getGameBoard().getProgress());
                 });
                 if (game.isGameOver()) {
                     viewIfExists().subscribe(view -> {
