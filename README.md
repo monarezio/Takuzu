@@ -13,3 +13,4 @@ a game inspired by [Takuzu](https://en.wikipedia.org/wiki/Takuzu)
 - [X] Game presentation
 - [X] Game graphics
 - [X] Create Gameboard layout
+- [ ] Cool features, such as animations and hinting
