@@ -27,12 +27,10 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
 
     override fun getProgress(): Int {
         val locked = lockedFields.size
-        val sum = fields.map { i -> i.size }.sum() - locked
+        val sum = rows() * columns() - locked
         val colored = fields.map { i -> i.filter { j -> j != Field.ANON }.size }.sum() - locked
 
-        if(colored <= 0) return 0
-
-        return (sum / colored * 100).toInt()
+        return (colored.toDouble() / sum  * 100).toInt()
     }
 
     override fun getFields(): List<List<Field>> = fields
@@ -119,10 +117,17 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
     }
 
     /**
-     * returns true if fields dont contain Field.ANON
+     * returns true if fields don't contain Field.ANON
      */
     private fun isFilledIn(): Boolean {
-        return fields.map { i -> i.contains(Field.ANON) }.contains(false)
+        for(i in 0..rows() - 1) {
+            for(j in 0..columns() - 1) {
+                if(fields[i][j] == Field.ANON)
+                    return false
+            }
+        }
+
+        return true
     }
 
     override fun validateColorAmount(): Boolean {
