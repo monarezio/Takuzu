@@ -11,6 +11,7 @@ a game inspired by [Takuzu](https://en.wikipedia.org/wiki/Takuzu)
 - [X] Mock data
 - [X] Game logic
 - [X] Game presentation
+- [X] User navigation
 - [X] Game graphics
 - [X] Create Gameboard layout
 - [ ] Cool features, such as animations and hinting
