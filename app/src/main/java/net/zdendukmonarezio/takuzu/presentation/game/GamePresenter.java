@@ -1,6 +1,5 @@
 package net.zdendukmonarezio.takuzu.presentation.game;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import net.zdendukmonarezio.takuzu.domain.Game;
@@ -8,10 +7,14 @@ import net.zdendukmonarezio.takuzu.domain.Takuzu;
 import net.zdendukmonarezio.takuzu.domain.models.Board;
 import net.zdendukmonarezio.takuzu.presentation.Presenter;
 
+import java.util.List;
+
+import kotlin.Pair;
+
 public class GamePresenter extends Presenter<GameView> {
 
     private Takuzu game;
-
+    private Takuzu newGameState;
     private int gameSize;
 
     @Override
@@ -22,6 +25,12 @@ public class GamePresenter extends Presenter<GameView> {
     public void onMoveMade(int x, int y) {
         if (!game.isGameOver()) {
             if (game.isMovePossible(x, y)) {
+                if (game.isBoardFilled()) {
+                    List<Pair<Integer, Integer>> pairs = game.getWrongFields();
+                    viewIfExists().subscribe(view -> {
+                        view.highlightWrongFields(pairs);
+                    });
+                }
                 game = game.onMoveMade(x, y);
                 Board newGameBoard = game.getGameBoard();
                 viewIfExists().subscribe(view -> {
@@ -46,6 +55,14 @@ public class GamePresenter extends Presenter<GameView> {
 
     public void setupGame() {
         game = Game.createNew(gameSize, gameSize);
+        newGameState = game;
+        viewIfExists().subscribe(view -> {
+            view.showGameBoard(game.getGameBoard(), gameSize);
+        });
+    }
+
+    public void resetGame(){
+        game = newGameState;
         viewIfExists().subscribe(view -> {
             view.showGameBoard(game.getGameBoard(), gameSize);
         });

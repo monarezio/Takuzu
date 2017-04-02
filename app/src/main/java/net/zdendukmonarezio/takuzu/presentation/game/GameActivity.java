@@ -9,8 +9,11 @@ import net.zdendukmonarezio.takuzu.R;
 import net.zdendukmonarezio.takuzu.domain.models.Board;
 import net.zdendukmonarezio.takuzu.presentation.results.ResultsActivity;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import kotlin.Pair;
 import nucleus.factory.RequiresPresenter;
 import nucleus.view.NucleusActivity;
 
@@ -44,8 +47,17 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
     }
 
     @Override
+    public void highlightWrongFields(List<Pair<Integer, Integer>> pairs) {
+        // TODO // FIXME: 02.04.2017
+    }
+
+    @Override
     public void goToResults() {
         Intent intent = new Intent(this, ResultsActivity.class);
         startActivity(intent);
+    }
+
+    public void resetBoard(View view) {
+        getPresenter().resetGame();
     }
 }

@@ -15,7 +15,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="123dp"
+        android:layout_marginTop="206dp"
         android:fontFamily="@string/font"
         android:text="Game created by:"
         android:textColor="@color/white"
