@@ -131,7 +131,7 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
     }
 
     override fun validateColorAmount(): Boolean {
-        return validateColumnsColorAmount() && validateRowAdjacency()
+        return validateColumnsColorAmount() && validateRowsColorAmount()
     }
 
     override fun validateAll(): Boolean {
@@ -148,9 +148,14 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
         /**
          * returns a new board with generated lockedFields
          */
-        fun createBlankBoard(rows: Int, columns: Int): Board = GameBoard(
-                ListUtil.createNewFields(List(rows) {List(rows) {Field.ANON}}, rows * columns / 4)
-            )
+        fun createBlankBoard(rows: Int, columns: Int): Board {
+            val gb = GameBoard(ListUtil.createNewFields(List(rows) {List(rows) {Field.ANON}}, rows * columns / 4))
+
+            if(!(gb.validateColorAmount() && gb.validateAdjacency()))
+                createBlankBoard(rows, columns)
+
+            return gb
+        }
 
         fun createBoard(fields: List<List<Field>>, lockedFields: List<Pair<Int, Int>>): Board = GameBoard(fields, lockedFields)
     }
