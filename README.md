@@ -9,7 +9,7 @@ a game inspired by [Takuzu](https://en.wikipedia.org/wiki/Takuzu)
 ### TODO
 - [X] Create interfaces
 - [X] Mock data
-- [ ] Game logic
-- [ ] Game presentation
+- [X] Game logic
+- [X] Game presentation
 - [X] Game graphics
 - [X] Create Gameboard layout
