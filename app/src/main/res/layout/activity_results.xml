@@ -18,6 +18,34 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="116dp"
+        android:background="@drawable/back_button"
+        android:fontFamily="@string/font"
         android:onClick="backToMainMenu"
-        android:text="back to main menu" />
+        android:text="@string/main_menu"
+        android:textColor="@color/white"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="87dp"
+        android:fontFamily="@string/font"
+        android:text="@string/well_done"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_48" />
+
+    <TextView
+        android:id="@+id/scoreAnnouncer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:fontFamily="@string/font"
+        android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="@dimen/about_text_size" />
+
 </RelativeLayout>

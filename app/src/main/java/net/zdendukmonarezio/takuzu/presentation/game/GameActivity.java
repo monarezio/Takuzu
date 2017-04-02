@@ -70,4 +70,5 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
     public void resetBoard(View view) {
         getPresenter().resetGame();
     }
+
 }
