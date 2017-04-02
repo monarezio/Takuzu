@@ -19,7 +19,6 @@ public class GamePresenter extends Presenter<GameView> {
         super.onCreate(savedState);
     }
 
-
     public void onMoveMade(int x, int y) {
         if (!game.isGameOver()) {
             if (game.isMovePossible(x, y)) {

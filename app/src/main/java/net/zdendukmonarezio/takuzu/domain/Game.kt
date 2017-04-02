@@ -10,6 +10,9 @@ import net.zdendukmonarezio.takuzu.domain.models.utils.FieldPickerUtil
  * Created by samuelkodytek on 06/03/2017.
  */
 class Game private constructor(val board: Board) : Takuzu {
+    override fun isBoardFilled(): Boolean {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     override fun onMoveMade(x: Int, y: Int): Takuzu {
         if(!isMovePossible(x, y))

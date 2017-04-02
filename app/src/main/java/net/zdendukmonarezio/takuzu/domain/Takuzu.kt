@@ -33,4 +33,10 @@ interface Takuzu {
      * returns the coordinates of incorrect fields
      */
     fun getWrongFields(): List<Pair<Int, Int>>
+
+    /**
+     * checks if board is fully filled - doesn't contain any ANON fields
+     * and returns corresponding value
+     */
+    fun isBoardFilled(): Boolean
 }

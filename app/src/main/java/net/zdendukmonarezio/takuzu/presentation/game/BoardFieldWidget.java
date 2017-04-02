@@ -55,7 +55,6 @@ public class BoardFieldWidget extends View {
         param.rowSpec = GridLayout.spec(row);
         param.columnSpec = GridLayout.spec(column);
         setLayoutParams(param);
-
     }
 
     @Override

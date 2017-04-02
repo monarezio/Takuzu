@@ -37,15 +37,7 @@ public class GameBoardLayout extends GridLayout {
         removeAllViews();
         setRowCount(gameBoard.rows());
         setColumnCount(gameBoard.columns());
-
-        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
-        Display display = wm.getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        int wWidth = size.x;
-        System.out.println(wWidth);
-        int fieldWidth = ((wWidth - getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin) * 2) - (gameSize - 1) * getResources().getDimensionPixelSize(R.dimen.field_margin)) / gameSize;
-        System.out.println(fieldWidth);
+        int fieldWidth = getFieldWidth(gameSize);
 
         for (int r = 0; r < gameBoard.rows(); r++) {
             for (int c = 0; c < gameBoard.columns(); c++) {
@@ -57,6 +49,16 @@ public class GameBoardLayout extends GridLayout {
         if (listener != null) {
             setupFieldListeners(listener);
         }
+    }
+
+    private int getFieldWidth(int gameSize) {
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int wWidth = size.x;
+        System.out.println(wWidth);
+        return ((wWidth - getResources().getDimensionPixelSize(R.dimen.activity_vertical_margin) * 2) - (gameSize - 1) * getResources().getDimensionPixelSize(R.dimen.field_margin)) / gameSize;
     }
 
     public void setOnMoveListener(OnMoveListener listener) {
