@@ -15,6 +15,6 @@ a game inspired by [Takuzu](https://en.wikipedia.org/wiki/Takuzu)
 - [X] Game graphics
 - [X] Create Gameboard layout
 - [ ] Create domain and interfaces for saving score
-- [ ] Android activity backstack fix
+- [X] Android activity backstack fix
 - [ ] Clean up code in domain logic
 - [ ] Cool features, such as animations and hinting
