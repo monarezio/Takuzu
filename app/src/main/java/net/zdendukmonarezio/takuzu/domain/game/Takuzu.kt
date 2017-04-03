@@ -1,8 +1,8 @@
 package net.zdendukmonarezio.takuzu.domain.game
 
-import net.zdendukmonarezio.takuzu.domain.models.game.Board
-import net.zdendukmonarezio.takuzu.domain.models.game.Field
-import net.zdendukmonarezio.takuzu.domain.models.game.GameBoard
+import net.zdendukmonarezio.takuzu.domain.game.models.game.Board
+import net.zdendukmonarezio.takuzu.domain.game.models.game.Field
+import net.zdendukmonarezio.takuzu.domain.game.models.game.GameBoard
 
 /**
  * Created by samuelkodytek on 06/03/2017.

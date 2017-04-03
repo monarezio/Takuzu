@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.GridLayout;
 
 import net.zdendukmonarezio.takuzu.R;
-import net.zdendukmonarezio.takuzu.domain.models.game.Field;
+import net.zdendukmonarezio.takuzu.domain.game.models.game.Field;
 
 public class BoardFieldWidget extends View {
 

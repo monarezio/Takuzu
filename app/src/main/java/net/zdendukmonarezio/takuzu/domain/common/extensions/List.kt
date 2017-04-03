@@ -1,4 +1,4 @@
-package net.zdendukmonarezio.takuzu.domain.models.extensions
+package net.zdendukmonarezio.takuzu.domain.common.extensions
 
 /**
  * Created by samuelkodytek on 25/03/2017.

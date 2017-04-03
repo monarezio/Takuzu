@@ -1,6 +1,6 @@
-package net.zdendukmonarezio.takuzu.domain.models.utils
+package net.zdendukmonarezio.takuzu.domain.common.utils
 
-import net.zdendukmonarezio.takuzu.domain.models.game.Field
+import net.zdendukmonarezio.takuzu.domain.game.models.game.Field
 import org.junit.Test
 
 import org.junit.Assert.*

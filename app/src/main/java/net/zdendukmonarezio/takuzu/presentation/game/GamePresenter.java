@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import net.zdendukmonarezio.takuzu.domain.game.Game;
 import net.zdendukmonarezio.takuzu.domain.game.Takuzu;
-import net.zdendukmonarezio.takuzu.domain.models.game.Board;
+import net.zdendukmonarezio.takuzu.domain.game.models.game.Board;
 import net.zdendukmonarezio.takuzu.presentation.Presenter;
 
 import java.util.List;

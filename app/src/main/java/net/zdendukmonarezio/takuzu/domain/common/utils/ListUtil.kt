@@ -1,8 +1,8 @@
-package net.zdendukmonarezio.takuzu.domain.models.utils
+package net.zdendukmonarezio.takuzu.domain.common.utils
 
-import net.zdendukmonarezio.takuzu.domain.models.game.Field
-import net.zdendukmonarezio.takuzu.domain.models.extensions.random
-import net.zdendukmonarezio.takuzu.domain.models.extensions.set
+import net.zdendukmonarezio.takuzu.domain.game.models.game.Field
+import net.zdendukmonarezio.takuzu.domain.common.extensions.random
+import net.zdendukmonarezio.takuzu.domain.common.extensions.set
 
 /**
  * Created by samuelkodytek on 07/03/2017.

@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import net.zdendukmonarezio.takuzu.R;
-import net.zdendukmonarezio.takuzu.domain.models.game.Board;
+import net.zdendukmonarezio.takuzu.domain.game.models.game.Board;
 import net.zdendukmonarezio.takuzu.presentation.results.ResultsActivity;
 
 import java.util.List;

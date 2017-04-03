@@ -1,8 +1,8 @@
-package net.zdendukmonarezio.takuzu.domain.models.game
+package net.zdendukmonarezio.takuzu.domain.game.models.game
 
-import net.zdendukmonarezio.takuzu.domain.models.extensions.set
-import net.zdendukmonarezio.takuzu.domain.models.utils.FieldPickerUtil
-import net.zdendukmonarezio.takuzu.domain.models.utils.ListUtil
+import net.zdendukmonarezio.takuzu.domain.common.extensions.set
+import net.zdendukmonarezio.takuzu.domain.common.utils.FieldPickerUtil
+import net.zdendukmonarezio.takuzu.domain.common.utils.ListUtil
 
 /**
  * Created by samuelkodytek on 06/03/2017.

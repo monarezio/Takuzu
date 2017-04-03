@@ -1,6 +1,6 @@
 package net.zdendukmonarezio.takuzu.presentation.game;
 
-import net.zdendukmonarezio.takuzu.domain.models.game.Board;
+import net.zdendukmonarezio.takuzu.domain.game.models.game.Board;
 
 import java.util.List;
 
