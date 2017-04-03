@@ -72,6 +72,16 @@ class GameBoardTest {
                 listOf(Field.BLUE, Field.RED, Field.RED, Field.BLUE),
                 listOf(Field.RED, Field.BLUE, Field.BLUE, Field.RED)
         ), listOf())
+        gameBoard.validateFieldAmount()
+    }
+
+    @Test fun validateAll() {
+        val gameBoard = GameBoard.createBoard(listOf(
+                listOf(Field.BLUE, Field.BLUE, Field.RED, Field.RED),
+                listOf(Field.RED, Field.RED, Field.BLUE, Field.BLUE),
+                listOf(Field.BLUE, Field.RED, Field.RED, Field.BLUE),
+                listOf(Field.RED, Field.BLUE, Field.BLUE, Field.RED)
+        ), listOf())
         assertTrue(gameBoard.validateAll())
         val newGameBoard = gameBoard.set(0, 0, Field.RED)
         assertFalse(newGameBoard.validateAll())

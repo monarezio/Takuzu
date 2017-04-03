@@ -99,7 +99,8 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
 
     private fun validateRowsColorAmount(): Boolean {
         for(i in 0..rows() - 1) {
-            if(fields[i].filter { i -> i != Field.BLUE }.size != fields[i].filter { i -> i != Field.RED }.size)
+            if(fields[i].filter { i -> i != Field.BLUE }.size <= rows() / 2
+                    && fields[i].filter { i -> i != Field.RED }.size <= rows() / 2)
                 return false
         }
 
@@ -109,7 +110,8 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
     private fun validateColumnsColorAmount(): Boolean {
         for(i in 0..columns() - 1) {
             val col = fields.map { list -> list[i] }
-            if(col.filter { i -> i != Field.BLUE }.size != col.filter { i -> i != Field.RED }.size)
+            if(col.filter { i -> i != Field.BLUE }.size <= columns() / 2
+                    && col.filter { i -> i != Field.RED }.size <= columns() / 2)
                 return false
         }
 
