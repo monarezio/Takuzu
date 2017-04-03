@@ -1,5 +1,7 @@
 package net.zdendukmonarezio.takuzu.domain.models
 
+import net.zdendukmonarezio.takuzu.domain.models.game.Field
+import net.zdendukmonarezio.takuzu.domain.models.game.GameBoard
 import org.junit.Test
 
 import org.junit.Assert.*

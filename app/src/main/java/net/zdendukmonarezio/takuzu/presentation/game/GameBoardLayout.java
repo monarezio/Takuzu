@@ -10,7 +10,7 @@ import android.view.WindowManager;
 import android.widget.GridLayout;
 
 import net.zdendukmonarezio.takuzu.R;
-import net.zdendukmonarezio.takuzu.domain.models.Board;
+import net.zdendukmonarezio.takuzu.domain.models.game.Board;
 
 public class GameBoardLayout extends GridLayout {
 

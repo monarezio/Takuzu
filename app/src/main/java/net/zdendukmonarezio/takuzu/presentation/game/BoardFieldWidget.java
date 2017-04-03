@@ -3,17 +3,15 @@ package net.zdendukmonarezio.takuzu.presentation.game;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.res.ResourcesCompat;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.GridLayout;
 
 import net.zdendukmonarezio.takuzu.R;
-import net.zdendukmonarezio.takuzu.domain.models.Field;
+import net.zdendukmonarezio.takuzu.domain.models.game.Field;
 
 public class BoardFieldWidget extends View {
 

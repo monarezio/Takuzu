@@ -1,4 +1,4 @@
-package net.zdendukmonarezio.takuzu.domain.models
+package net.zdendukmonarezio.takuzu.domain.models.game
 
 /**
  * Created by samuelkodytek on 06/03/2017.
