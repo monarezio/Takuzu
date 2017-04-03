@@ -42,9 +42,9 @@ class GameBoardTest {
                 listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
                 listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
         ), listOf())
-        assertFalse(gameBoard.validateColorAmount())
+        assertTrue(gameBoard.validateColorAmount())
         println("---")
-        assertTrue(gameBoard.set(0, 3, Field.BLUE).validateColorAmount())
+        assertFalse(gameBoard.set(0, 3, Field.BLUE).validateColorAmount())
     }
 
     @Test
