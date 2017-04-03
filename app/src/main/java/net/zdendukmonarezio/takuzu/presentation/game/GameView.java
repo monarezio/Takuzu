@@ -1,8 +1,6 @@
 package net.zdendukmonarezio.takuzu.presentation.game;
 
-import android.view.View;
-
-import net.zdendukmonarezio.takuzu.domain.models.Board;
+import net.zdendukmonarezio.takuzu.domain.models.game.Board;
 
 import java.util.List;
 

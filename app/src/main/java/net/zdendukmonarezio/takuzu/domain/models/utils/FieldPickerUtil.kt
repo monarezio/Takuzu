@@ -1,6 +1,6 @@
 package net.zdendukmonarezio.takuzu.domain.models.utils
 
-import net.zdendukmonarezio.takuzu.domain.models.Field
+import net.zdendukmonarezio.takuzu.domain.models.game.Field
 import net.zdendukmonarezio.takuzu.domain.models.extensions.random
 
 /**

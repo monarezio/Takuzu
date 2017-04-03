@@ -1,8 +1,8 @@
 package net.zdendukmonarezio.takuzu.domain
 
-import net.zdendukmonarezio.takuzu.domain.models.Board
-import net.zdendukmonarezio.takuzu.domain.models.GameBoard
-import net.zdendukmonarezio.takuzu.domain.models.IllegalMoveException
+import net.zdendukmonarezio.takuzu.domain.models.game.Board
+import net.zdendukmonarezio.takuzu.domain.models.game.GameBoard
+import net.zdendukmonarezio.takuzu.domain.models.game.IllegalMoveException
 import net.zdendukmonarezio.takuzu.domain.models.extensions.set
 import net.zdendukmonarezio.takuzu.domain.models.utils.FieldPickerUtil
 

@@ -1,4 +1,4 @@
-package net.zdendukmonarezio.takuzu.domain.models
+package net.zdendukmonarezio.takuzu.domain.models.game
 
 import net.zdendukmonarezio.takuzu.domain.models.extensions.set
 import net.zdendukmonarezio.takuzu.domain.models.utils.FieldPickerUtil
@@ -151,7 +151,7 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
          * returns a new board with generated lockedFields
          */
         fun createBlankBoard(rows: Int, columns: Int): Board {
-            val gb = GameBoard(ListUtil.createNewFields(List(rows) {List(rows) {Field.ANON}}, rows * columns / 4))
+            val gb = GameBoard(ListUtil.createNewFields(List(rows) {List(rows) { Field.ANON }}, rows * columns / 4))
 
             if(!(gb.validateColorAmount() && gb.validateAdjacency())) //Using the famous ostrich algorithm https://en.wikipedia.org/wiki/Ostrich_algorithm
                 createBlankBoard(rows, columns)
