@@ -77,4 +77,8 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
             scoreTextView.setText("Score " + (newScore + score));
         }
     }
+
+    @Override
+    public void onBackPressed() {
+    }
 }

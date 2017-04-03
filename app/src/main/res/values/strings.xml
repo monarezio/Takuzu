@@ -1,8 +1,6 @@
 <resources>
     <string name="font">sans-serif-thin</string>
-
     <string name="app_name">Takuzu</string>
-
     <string name="main_button_more">...</string>
     <string name="_32">32</string>
     <string name="_16">16</string>
@@ -13,4 +11,7 @@
     <string name="zdenek_david">Zdeněk David</string>
     <string name="samuel_kodytek">Samuel Kodytek</string>
     <string name="_0percent">0%</string>
+    <string name="back">BACK</string>
+    <string name="main_menu">main menu</string>
+    <string name="well_done">Well done!</string>
 </resources>

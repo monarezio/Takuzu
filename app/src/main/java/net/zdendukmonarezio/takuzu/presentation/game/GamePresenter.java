@@ -39,7 +39,7 @@ public class GamePresenter extends Presenter<GameView> {
                 });
                 if (game.isGameOver()) {
                     viewIfExists().subscribe(view -> {
-                        view.goToResults(gameSize*gameSize);
+                        view.goToResults(gameSize * gameSize);
                     });
                 }
             } else {

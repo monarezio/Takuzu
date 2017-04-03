@@ -15,35 +15,48 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="206dp"
         android:fontFamily="@string/font"
         android:text="Game created by:"
         android:textColor="@color/white"
-        android:textSize="@dimen/about_text_size"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:textSize="@dimen/about_text_size" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
         android:fontFamily="@string/font"
         android:text="@string/zdenek_david"
         android:textColor="@color/white"
-        android:textSize="@dimen/about_text_size"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp" />
+        android:textSize="@dimen/about_text_size" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
         android:fontFamily="@string/font"
         android:text="@string/samuel_kodytek"
         android:textColor="@color/white"
-        android:textSize="@dimen/about_text_size"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true" />
+        android:textSize="@dimen/about_text_size" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/back_button"
+        android:fontFamily="@string/font"
+        android:onClick="backToMain"
+        android:text="@string/back"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_18" />
 </RelativeLayout>

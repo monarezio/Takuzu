@@ -11,4 +11,6 @@
 
     <dimen name="round_corner_size">20dp</dimen>
     <dimen name="about_text_size">36dp</dimen>
+    <dimen name="_18">18dp</dimen>
+    <dimen name="_48">48dp</dimen>
 </resources>

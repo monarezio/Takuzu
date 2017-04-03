@@ -9,6 +9,9 @@ import java.util.List;
 import kotlin.Pair;
 
 public interface GameView {
+    /*
+     *  shows Game Board with fields of appropriate size
+     */
     void showGameBoard(Board gameBoard, int gameSize);
 
     /*
@@ -27,5 +30,8 @@ public interface GameView {
      */
     void highlightWrongFields(List<Pair<Integer, Integer>> pairs);
 
+    /*
+     *  updates TextView percent_counter with corresponding data
+     */
     void updatePercentStatus(int percent);
 }
