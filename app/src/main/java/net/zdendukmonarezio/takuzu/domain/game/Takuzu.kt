@@ -1,4 +1,4 @@
-package net.zdendukmonarezio.takuzu.domain
+package net.zdendukmonarezio.takuzu.domain.game
 
 import net.zdendukmonarezio.takuzu.domain.models.game.Board
 import net.zdendukmonarezio.takuzu.domain.models.game.Field

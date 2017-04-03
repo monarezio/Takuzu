@@ -2,8 +2,8 @@ package net.zdendukmonarezio.takuzu.presentation.game;
 
 import android.os.Bundle;
 
-import net.zdendukmonarezio.takuzu.domain.Game;
-import net.zdendukmonarezio.takuzu.domain.Takuzu;
+import net.zdendukmonarezio.takuzu.domain.game.Game;
+import net.zdendukmonarezio.takuzu.domain.game.Takuzu;
 import net.zdendukmonarezio.takuzu.domain.models.game.Board;
 import net.zdendukmonarezio.takuzu.presentation.Presenter;
 
