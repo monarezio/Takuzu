@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.TextView;
 
 import net.zdendukmonarezio.takuzu.R;
-import net.zdendukmonarezio.takuzu.presentation.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,9 +31,6 @@ public class ResultsActivity extends Activity {
     }
 
     public void backToMainMenu(View view) {
-      /*  Intent intent = new Intent(this, MainActivity.class);
-        intent.putExtra("score", getIntent().getIntExtra("score", 0));
-        startActivity(intent);*/
         finish();
     }
 }

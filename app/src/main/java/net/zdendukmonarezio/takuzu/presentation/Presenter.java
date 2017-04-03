@@ -9,6 +9,6 @@ public class Presenter<E> extends RxPresenter<E> {
      *  > call viewIfExists() instead of view()
      */
     public Observable<E> viewIfExists() {
-        return view().filter(view -> view != null);
+        return view().filter(view -> view != null).first();
     }
 }

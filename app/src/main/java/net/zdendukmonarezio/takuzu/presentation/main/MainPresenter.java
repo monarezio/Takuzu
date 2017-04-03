@@ -16,4 +16,10 @@ public class MainPresenter extends Presenter<MainView> {
             view.updateScore();
         });
     }
+
+    public void onButtonClick(int size) {
+        viewIfExists().subscribe(view -> {
+            view.start(size);
+        });
+    }
 }

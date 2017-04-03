@@ -4,5 +4,7 @@ interface MainView {
     /*
      * updates TextView score with appropriate data
      */
-    public void updateScore();
+    void updateScore();
+
+    void start(int size);
 }

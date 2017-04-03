@@ -34,26 +34,26 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
     }
 
     public void startGame4(View view) {
-        start(4);
+        getPresenter().onButtonClick(4);
     }
 
     public void startGame6(View view) {
-        start(6);
+        getPresenter().onButtonClick(6);
     }
 
     public void startGame8(View view) {
-        start(8);
+        getPresenter().onButtonClick(8);
     }
 
     public void startGame12(View view) {
-        start(12);
+        getPresenter().onButtonClick(12);
     }
 
     public void startGame16(View view) {
-        start(16);
+        getPresenter().onButtonClick(16);
     }
 
-    private void start(int gameSize) {
+    public void start(int gameSize) {
         Intent intent = new Intent(this, GameActivity.class);
         intent.putExtra("gameSize", gameSize);
         intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
@@ -67,7 +67,6 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
 
     @Override
     public void updateScore() {
-
         Intent intent = getIntent();
         if (intent != null) {
             SharedPreferences preferences = this.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
