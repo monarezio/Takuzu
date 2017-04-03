@@ -151,7 +151,7 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
         fun createBlankBoard(rows: Int, columns: Int): Board {
             val gb = GameBoard(ListUtil.createNewFields(List(rows) {List(rows) {Field.ANON}}, rows * columns / 4))
 
-            if(!gb.validateAdjacency()) //Using the famous ostrich algorithm https://en.wikipedia.org/wiki/Ostrich_algorithm
+            if(!(gb.validateColorAmount() && gb.validateAdjacency())) //Using the famous ostrich algorithm https://en.wikipedia.org/wiki/Ostrich_algorithm
                 createBlankBoard(rows, columns)
 
             return gb
