@@ -44,7 +44,7 @@ public class GamePresenter extends Presenter<GameView> {
                 }
             } else {
                 viewIfExists().subscribe(view -> {
-                    view.warn("Unable to make move");
+                    view.warn("This field is locked");
                 });
             }
         }

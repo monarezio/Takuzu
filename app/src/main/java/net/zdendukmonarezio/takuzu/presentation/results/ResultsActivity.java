@@ -39,5 +39,6 @@ public class ResultsActivity extends Activity {
 
     @Override
     public void onBackPressed() {
+        
     }
 }

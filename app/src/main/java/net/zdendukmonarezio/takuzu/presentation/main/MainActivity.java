@@ -3,7 +3,9 @@ package net.zdendukmonarezio.takuzu.presentation.main;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.view.View;
 import android.widget.TextView;
 
@@ -78,7 +80,9 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onBackPressed() {
+        finishAndRemoveTask();
     }
 }
