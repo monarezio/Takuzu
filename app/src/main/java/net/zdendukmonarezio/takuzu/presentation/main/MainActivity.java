@@ -56,6 +56,7 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
     private void start(int gameSize) {
         Intent intent = new Intent(this, GameActivity.class);
         intent.putExtra("gameSize", gameSize);
+        intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(intent);
     }
 

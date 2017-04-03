@@ -32,13 +32,9 @@ public class ResultsActivity extends Activity {
     }
 
     public void backToMainMenu(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+      /*  Intent intent = new Intent(this, MainActivity.class);
         intent.putExtra("score", getIntent().getIntExtra("score", 0));
-        startActivity(intent);
-    }
-
-    @Override
-    public void onBackPressed() {
-        
+        startActivity(intent);*/
+        finish();
     }
 }
