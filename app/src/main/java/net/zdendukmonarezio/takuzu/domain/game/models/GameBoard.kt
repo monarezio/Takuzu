@@ -1,6 +1,6 @@
 package net.zdendukmonarezio.takuzu.domain.game.models.game
 
-import net.zdendukmonarezio.takuzu.domain.common.extensions.set
+import net.zdendukmonarezio.takuzu.domain.common.extensions.*
 import net.zdendukmonarezio.takuzu.domain.common.utils.FieldPickerUtil
 import net.zdendukmonarezio.takuzu.domain.common.utils.ListUtil
 
@@ -98,13 +98,8 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
     }
 
     private fun validateRowsColorAmount(): Boolean {
-        for(i in 0..rows() - 1) {
-            if(fields[i].filter { i -> i == Field.BLUE }.size > rows() / 2
-                    || fields[i].filter { i -> i == Field.RED }.size > rows() / 2)
-                return false
-        }
-
-        return true
+        return !fields.any { i -> i.filter { i -> i == Field.BLUE }.size > rows() / 2
+                || i.filter { i -> i == Field.RED }.size > rows() / 2 }
     }
 
     private fun validateColumnsColorAmount(): Boolean {
@@ -122,14 +117,7 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
      * returns true if fields don't contain Field.ANON
      */
     private fun isFilledIn(): Boolean {
-        for(i in 0..rows() - 1) {
-            for(j in 0..columns() - 1) {
-                if(fields[i][j] == Field.ANON)
-                    return false
-            }
-        }
-
-        return true
+        return !fields.layeredAny { item -> item == Field.ANON }
     }
 
     override fun validateColorAmount(): Boolean {

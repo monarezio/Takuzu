@@ -18,28 +18,8 @@ fun main(args: Array<String>) {
             listOf(Field.RED, Field.RED, Field.BLUE, Field.ANON)
     )
 
-    val fields2 = listOf(
-            listOf(Field.RED, Field.ANON, Field.ANON, Field.ANON),
-            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
-            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
-            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
-    )
+    val f = fields.mapIndexed { index, list -> list[index] }
 
-    fun validate(col: List<List<Field>>): Boolean {
-        for(i in 0..fields.size - 1) {
-            for(j in 0..fields[i].size - 1) {
-                if(col[i][j] == Field.ANON)
-                    return false
-            }
-        }
-
-        return true
-    }
-
-
-    val col = validate(fields)
-    val col2 = validate(fields2)
-
-    print("" + col + " " + col2)
+    print(f)
 
 }

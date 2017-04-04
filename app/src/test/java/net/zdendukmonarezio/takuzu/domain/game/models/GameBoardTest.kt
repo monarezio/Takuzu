@@ -45,7 +45,6 @@ class GameBoardTest {
                 listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
         ), listOf())
         assertTrue(gameBoard.validateColorAmount())
-        println("---")
         assertFalse(gameBoard.set(0, 3, Field.BLUE).validateColorAmount())
     }
 
