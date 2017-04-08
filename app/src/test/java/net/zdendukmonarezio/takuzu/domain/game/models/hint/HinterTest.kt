@@ -23,7 +23,13 @@ class HinterTest {
 
     @Test
     fun hintColumns() {
-
+        val hint = Hinter(GameBoard.createBoard(listOf(
+                listOf(Field.BLUE, Field.BLUE, Field.RED, Field.RED),
+                listOf(Field.BLUE, Field.BLUE, Field.RED, Field.ANON),
+                listOf(Field.BLUE, Field.BLUE, Field.RED, Field.RED),
+                listOf(Field.BLUE, Field.BLUE, Field.BLUE, Field.ANON)
+        ), listOf()))
+        Assert.assertEquals(Pair(0, 1), hint.hintColumns())
     }
 
     @Test

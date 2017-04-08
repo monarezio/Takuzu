@@ -7,7 +7,7 @@ import rx.Observable
 /**
  * Created by monarezio on 08/04/2017.
  */
-private class ScoreManager(private val score: Score) {
+class ScoreManager private constructor(private val score: Score) {
 
     /**
      * return a observable with the score
