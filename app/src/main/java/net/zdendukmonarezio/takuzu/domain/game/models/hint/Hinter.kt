@@ -22,11 +22,11 @@ class Hinter(private val board: Board): Hintable{
         return null //Return something of the board, but this method should not be called if everything is correct
     }
 
-    override fun hintColumns(): Pair<Int, Int> {
+    override fun hintColumns(): Pair<Int, Int>? {
         for (i in 0..board.columns()) {
             val first = board.getFields().map { item -> item[i] }
             for (j in 0..board.columns()) {
-                val second = board.getField
+                val second = board.getFields().map { item -> item[j] }
                 if(i != j && first == second)
                     return Pair(i, j)
             }
