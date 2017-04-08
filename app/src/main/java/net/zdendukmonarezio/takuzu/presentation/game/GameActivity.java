@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import net.zdendukmonarezio.takuzu.R;
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Board;
+import net.zdendukmonarezio.takuzu.domain.score.ScoreManager;
 import net.zdendukmonarezio.takuzu.presentation.results.ResultsActivity;
 
 import java.util.List;
@@ -62,9 +63,8 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
 
     @Override
     public void goToResults(int score) {
-        Intent intent = new Intent(this, ResultsActivity.class);
-        intent.putExtra("score", score);
-        startActivity(intent);
+        ScoreManager manager = ScoreManager.createScoreManager(this);
+        manager.addScore(score);
     }
 
     public void resetBoard(View view) {

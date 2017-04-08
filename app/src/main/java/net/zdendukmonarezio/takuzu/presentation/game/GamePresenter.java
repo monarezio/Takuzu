@@ -5,6 +5,7 @@ import android.os.Bundle;
 import net.zdendukmonarezio.takuzu.domain.game.Game;
 import net.zdendukmonarezio.takuzu.domain.game.Takuzu;
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Board;
+import net.zdendukmonarezio.takuzu.domain.score.ScoreManager;
 import net.zdendukmonarezio.takuzu.presentation.Presenter;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class GamePresenter extends Presenter<GameView> {
                 });
                 if (game.isGameOver()) {
                     viewIfExists().subscribe(view -> {
-                        view.goToResults(gameSize * gameSize);
+                        view.goToResults(gameSize*gameSize);
                     });
                 }
             } else {

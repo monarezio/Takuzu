@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import net.zdendukmonarezio.takuzu.R;
+import net.zdendukmonarezio.takuzu.domain.score.ScoreManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -25,9 +26,8 @@ public class ResultsActivity extends Activity {
     }
 
     private void setScoreAnnouncerText() {
-        Intent intent = getIntent();
-        int score = intent.getIntExtra("score", 0);
-        scoreAnnouncer.setText("Score +" + score);
+        ScoreManager manager = ScoreManager.createScoreManager(this);
+        manager.getScore().subscribe(integer -> scoreAnnouncer.setText(integer));
     }
 
     public void backToMainMenu(View view) {

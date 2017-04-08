@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import net.zdendukmonarezio.takuzu.R;
+import net.zdendukmonarezio.takuzu.domain.score.ScoreManager;
 import net.zdendukmonarezio.takuzu.presentation.about.AboutActivity;
 import net.zdendukmonarezio.takuzu.presentation.game.GameActivity;
 
@@ -67,17 +68,8 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
 
     @Override
     public void updateScore() {
-        Intent intent = getIntent();
-        if (intent != null) {
-            SharedPreferences preferences = this.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
-            int score = preferences.getInt("highscore", 0);
-
-            int newScore = intent.getIntExtra("score", 0);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putInt("highscore", newScore + score);
-            editor.commit();
-            scoreTextView.setText("Score " + (newScore + score));
-        }
+        ScoreManager manager = ScoreManager.createScoreManager(this);
+        manager.getScore().subscribe(integer -> scoreTextView.setText(integer));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

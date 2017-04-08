@@ -13,8 +13,7 @@ public interface GameView {
     void showGameBoard(Board gameBoard, int gameSize);
 
     /*
-     *  goes to result screen and puts score as an extra
-     *  score = game size^2
+     *  goes to result screen and adds score to score manager
      */
     void goToResults(int score);
 
