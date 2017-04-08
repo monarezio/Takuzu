@@ -1,6 +1,7 @@
 package net.zdendukmonarezio.takuzu.data.score
 
 import android.content.Context
+import android.content.SharedPreferences
 import net.zdendukmonarezio.takuzu.R
 import net.zdendukmonarezio.takuzu.domain.score.Score
 import rx.Observable
@@ -23,7 +24,7 @@ class ScoreData(context: Context): Score {
     }
 
     override fun setScore(score: Int) {
-        val editor = sharedPref.edit()
+        val editor: SharedPreferences.Editor = sharedPref.edit()
         editor.putInt(keyScore, score)
     }
 

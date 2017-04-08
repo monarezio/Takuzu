@@ -82,5 +82,4 @@ class Hinter(private val board: Board): Hintable{
 
         return Hint(listOf(), NO_HINT_AVAILABLE)
     }
-
 }
