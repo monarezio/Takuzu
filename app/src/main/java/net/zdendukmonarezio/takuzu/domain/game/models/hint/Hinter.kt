@@ -14,7 +14,8 @@ class Hinter(private val board: Board): Hintable{
             val first = board.getField(i)
             for (j in 0..board.rows()) {
                 val second = board.getField(j)
-                if(first == second) return Pair(i, j)
+                if(i != j && first == second)
+                    return Pair(i, j)
             }
         }
 
@@ -22,7 +23,16 @@ class Hinter(private val board: Board): Hintable{
     }
 
     override fun hintColumns(): Pair<Int, Int> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        for (i in 0..board.columns()) {
+            val first = board.getFields().map { item -> item[i] }
+            for (j in 0..board.columns()) {
+                val second = board.getField
+                if(i != j && first == second)
+                    return Pair(i, j)
+            }
+        }
+
+        return null //Return something of the board, but this method should not be called if everything is correct
     }
 
     override fun hintWrongRow(): Int {

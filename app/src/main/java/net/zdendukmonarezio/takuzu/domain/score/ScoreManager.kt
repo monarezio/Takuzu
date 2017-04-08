@@ -1,11 +1,13 @@
 package net.zdendukmonarezio.takuzu.domain.score
 
+import android.content.Context
+import net.zdendukmonarezio.takuzu.data.score.ScoreData
 import rx.Observable
 
 /**
  * Created by monarezio on 08/04/2017.
  */
-class ScoreManager(private val score: Score) {
+private class ScoreManager(private val score: Score) {
 
     /**
      * return a observable with the score
@@ -22,4 +24,7 @@ class ScoreManager(private val score: Score) {
      */
     fun addScore(score: Int) = this.score.addScore(score)
 
+    companion object {
+        fun createScoreManager(context: Context) = ScoreManager(ScoreData(context))
+    }
 }
