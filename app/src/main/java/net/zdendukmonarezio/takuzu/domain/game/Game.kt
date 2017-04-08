@@ -5,11 +5,14 @@ import net.zdendukmonarezio.takuzu.domain.game.models.game.GameBoard
 import net.zdendukmonarezio.takuzu.domain.game.models.game.IllegalMoveException
 import net.zdendukmonarezio.takuzu.domain.common.extensions.set
 import net.zdendukmonarezio.takuzu.domain.common.utils.FieldPickerUtil
+import net.zdendukmonarezio.takuzu.domain.game.models.hint.Hinter
+import net.zdendukmonarezio.takuzu.domain.game.models.hint.models.Hint
 
 /**
  * Created by samuelkodytek on 06/03/2017.
  */
 class Game private constructor(private val board: Board) : Takuzu {
+    val hinter = Hinter(board)
     override fun isBoardFilled(): Boolean {
         return false;
     }
@@ -33,8 +36,8 @@ class Game private constructor(private val board: Board) : Takuzu {
         return board.validateAll()
     }
 
-    override fun getWrongFields(): List<Pair<Int, Int>> { //TODO: Not needed for now
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun getWrongFields(): Hint { //TODO: Not needed for now
+        return hinter.hintNext()
     }
 
     companion object Game {

@@ -3,6 +3,7 @@ package net.zdendukmonarezio.takuzu.domain.game
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Board
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Field
 import net.zdendukmonarezio.takuzu.domain.game.models.game.GameBoard
+import net.zdendukmonarezio.takuzu.domain.game.models.hint.models.Hint
 
 /**
  * Created by samuelkodytek on 06/03/2017.
@@ -32,7 +33,7 @@ interface Takuzu {
     /**
      * returns the coordinates of incorrect fields
      */
-    fun getWrongFields(): List<Pair<Int, Int>>
+    fun getWrongFields(): Hint
 
     /**
      * checks if board is fully filled - doesn't contain any ANON fields
