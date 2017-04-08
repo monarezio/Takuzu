@@ -64,7 +64,7 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
     @Override
     public void goToResults(int score) {
         ScoreManager manager = ScoreManager.createScoreManager(this);
-        manager.addScore(score);
+        manager.addScore(4);
         Intent intent = new Intent(this, ResultsActivity.class);
         startActivity(intent);
     }
