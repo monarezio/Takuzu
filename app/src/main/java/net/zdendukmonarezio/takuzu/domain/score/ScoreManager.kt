@@ -25,6 +25,6 @@ private class ScoreManager(private val score: Score) {
     fun addScore(score: Int) = this.score.addScore(score)
 
     companion object {
-        fun createScoreManager(context: Context) = ScoreManager(ScoreData(context))
+        @JvmStatic fun createScoreManager(context: Context) = ScoreManager(ScoreData(context))
     }
 }
