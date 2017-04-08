@@ -69,7 +69,7 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
     @Override
     public void updateScore() {
         ScoreManager manager = ScoreManager.createScoreManager(this);
-        manager.getScore().subscribe(integer -> scoreTextView.setText(integer));
+        manager.getScore().subscribe(integer -> scoreTextView.setText(integer.toString()));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
