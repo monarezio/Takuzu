@@ -65,6 +65,8 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
     public void goToResults(int score) {
         ScoreManager manager = ScoreManager.createScoreManager(this);
         manager.addScore(score);
+        Intent intent = new Intent(this, ResultsActivity.class);
+        startActivity(intent);
     }
 
     public void resetBoard(View view) {
