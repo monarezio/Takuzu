@@ -1,5 +1,6 @@
 package net.zdendukmonarezio.takuzu.domain.score
 
+import android.content.Context
 import rx.Observable
 
 /**
