@@ -10,6 +10,8 @@ interface Board {
      */
     fun getFields(): List<List<Field>>
 
+    fun getField(i: Int): List<Field>
+
     /**
      * returns locked fields (unchangeable)
      */

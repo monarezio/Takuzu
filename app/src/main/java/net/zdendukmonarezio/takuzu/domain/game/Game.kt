@@ -9,7 +9,7 @@ import net.zdendukmonarezio.takuzu.domain.common.utils.FieldPickerUtil
 /**
  * Created by samuelkodytek on 06/03/2017.
  */
-class Game private constructor(val board: Board) : Takuzu {
+class Game private constructor(private val board: Board) : Takuzu {
     override fun isBoardFilled(): Boolean {
         return false;
     }
