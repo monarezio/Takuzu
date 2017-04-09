@@ -26,6 +26,7 @@ class ScoreData(context: Context): Score {
     override fun setScore(score: Int) {
         val editor: SharedPreferences.Editor = sharedPref.edit()
         editor.putInt(keyScore, score)
+        editor.commit()
     }
 
     override fun addScore(score: Int) {

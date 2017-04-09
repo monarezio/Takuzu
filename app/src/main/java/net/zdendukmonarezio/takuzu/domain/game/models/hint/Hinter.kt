@@ -58,6 +58,10 @@ class Hinter(private val board: Board): Hintable{
         return null
     }
 
+    override fun hintByColor(): Pair<Int, Int> {
+        return Pair(1, 1)
+    }
+
     override fun hintNext(): Hint {
         val row = hintWrongRow()
 
