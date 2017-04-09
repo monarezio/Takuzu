@@ -13,10 +13,11 @@ import net.zdendukmonarezio.takuzu.domain.game.models.game.GameBoard
  */
 fun main(args: Array<String>) {
     val a = listOf(
-            listOf(Field.ANON, Field.BLUE, Field.BLUE, Field.BLUE),
-            listOf(Field.ANON, Field.BLUE, Field.BLUE, Field.BLUE),
-            listOf(Field.ANON, Field.BLUE, Field.BLUE, Field.BLUE),
-            listOf(Field.ANON, Field.BLUE, Field.BLUE, Field.BLUE))
+            listOf(Field.BLUE, Field.ANON, Field.BLUE, Field.ANON),
+            listOf(Field.ANON, Field.RED, Field.ANON, Field.ANON),
+            listOf(Field.ANON, Field.RED, Field.ANON, Field.ANON),
+            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+    )
 
     println(ListUtil.toPair(a))
 }
