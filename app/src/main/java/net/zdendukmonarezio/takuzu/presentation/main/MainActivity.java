@@ -34,6 +34,12 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
         getPresenter().setScoreText();
     }
 
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        getPresenter().setScoreText();
+    }
+
     public void startGame4(View view) {
         getPresenter().onButtonClick(4);
     }
@@ -70,6 +76,7 @@ public class MainActivity extends NucleusActivity<MainPresenter> implements Main
     public void updateScore() {
         ScoreManager manager = ScoreManager.createScoreManager(this);
         manager.getScore().subscribe(integer -> scoreTextView.setText("Score " + integer.toString()));
+        manager.getScore().subscribe(integer -> System.out.println(integer));
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)

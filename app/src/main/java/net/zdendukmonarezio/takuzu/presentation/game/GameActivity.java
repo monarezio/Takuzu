@@ -71,6 +71,7 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
         ScoreManager manager = ScoreManager.createScoreManager(this);
         manager.addScore(score);
         Intent intent = new Intent(this, ResultsActivity.class);
+        intent.putExtra("score", score);
         startActivity(intent);
     }
 

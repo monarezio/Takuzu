@@ -26,8 +26,8 @@ public class ResultsActivity extends Activity {
     }
 
     private void setScoreAnnouncerText() {
-        ScoreManager manager = ScoreManager.createScoreManager(this);
-        manager.getScore().subscribe(integer -> scoreAnnouncer.setText("Score +" + integer.toString()));
+        int score = getIntent().getIntExtra("score", 0);
+        scoreAnnouncer.setText("Score +" + score);
     }
 
     public void backToMainMenu(View view) {
