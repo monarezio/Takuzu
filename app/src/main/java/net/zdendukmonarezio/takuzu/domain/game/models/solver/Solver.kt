@@ -1,5 +1,6 @@
 package net.zdendukmonarezio.takuzu.domain.game.models.solver
 
+import net.zdendukmonarezio.takuzu.domain.common.utils.ListUtil
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Board
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Field
 import net.zdendukmonarezio.takuzu.domain.game.models.game.GameBoard
@@ -13,22 +14,31 @@ class Solver(private val board: Board): Solvable {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun solve(): Board {
-        fun helper(board: Board): Board {
-            val anonymousCoords = board.getFields().mapIndexed { index, list ->
-                Pair(index, list.filter { i -> i == Field.ANON }
-                        .mapIndexed { index, field -> index }
-                )
+    override fun solve(): Board? {
+        fun helper(gameBoard: GameBoard): Board? {
+            if(gameBoard.validateColorAmount() && gameBoard.validateAdjacency()) {
+                val anonymousCoords = ListUtil.toPair(gameBoard.getFields())
+                if (!anonymousCoords.isEmpty()) {
+                    for (i in 0..anonymousCoords.size - 1) {
+                        val blueBoard = gameBoard.set(anonymousCoords[i].first, anonymousCoords[i].second, Field.BLUE)
+                        val blue = helper(blueBoard as GameBoard)
+                        if (blue != null)
+                            return blue
+
+                        val redBoard = gameBoard.set(anonymousCoords[i].first, anonymousCoords[i].second, Field.RED)
+                        val red = helper(redBoard as GameBoard)
+                        if (red != null)
+                            return red
+                    }
+                } else if (gameBoard.validateAll()) {
+                    return gameBoard
+                }
             }
 
-            anonymousCoords.forEach { i ->
-                //helper(GameBoard.createBoard(board.set(i.first, i.second, Field.BLUE)))
-            }
-
-            return board
+            return null
         }
 
-        return helper(board)
+        return helper(board as GameBoard)
     }
 
     override fun getBoard(): Board = board

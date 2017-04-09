@@ -51,9 +51,21 @@ object ListUtil {
 
 
     fun toPair(list: List<List<Field>>): List<Pair<Int, Int>> {
-        return list.mapIndexed { x, list ->
+        /*return list.mapIndexed { x, list ->
             list.filter { i -> i == Field.ANON }
                     .mapIndexed { y, field -> Pair(x, y) }
-        }.flatMap { i -> i }
+        }.flatMap { i -> i }*/
+
+        var newList = listOf<Pair<Int, Int>>()
+
+        list.forEachIndexed { index, pair ->
+            pair.forEachIndexed { jindex, field ->
+                if(field == Field.ANON)
+                    newList = newList + listOf(Pair(index, jindex))
+            }
+        }
+
+
+        return newList
     }
 }

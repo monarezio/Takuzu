@@ -15,7 +15,7 @@ interface Solvable {
     /**
      * returns the solved board
      */
-    fun solve(): Board
+    fun solve(): Board?
 
     /**
      * returns the board
