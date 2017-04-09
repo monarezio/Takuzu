@@ -28,11 +28,8 @@ public class GamePresenter extends Presenter<GameView> {
         if (!game.isGameOver()) {
             if (game.isMovePossible(x, y)) {
                 if (game.isBoardFilled()) {
-<<<<<<< HEAD
                     List<Pair<Integer, Integer>> pairs = game.getWrongFields().getCoords();
-=======
                     Hint hint = game.getWrongFields();
->>>>>>> 4e000afec559cd40a25dc2565c7365e2433b696b
                     viewIfExists().subscribe(view -> {
                         view.highlightWrongFields(hint.getCoords());
                     });
