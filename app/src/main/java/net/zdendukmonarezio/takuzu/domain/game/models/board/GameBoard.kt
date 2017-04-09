@@ -150,6 +150,9 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
             return gb
         }
 
+
         fun createBoard(fields: List<List<Field>>, lockedFields: List<Pair<Int, Int>>): Board = GameBoard(fields, lockedFields)
+
+        fun createBoard(board: Board): Board = GameBoard(board.getFields(), board.getLockedFields())
     }
 }

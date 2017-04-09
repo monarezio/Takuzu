@@ -9,7 +9,6 @@ import net.zdendukmonarezio.takuzu.domain.common.extensions.random
 object FieldPickerUtil {
 
     /**
-     * TODO: think of a algo to return a valid field on the position
      * returns a field
      */
     fun getField(): Field {

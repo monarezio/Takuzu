@@ -47,4 +47,13 @@ object ListUtil {
     fun listOfPairsByFirst(size: Int, second: Int): List<Pair<Int, Int>> = 0.rangeTo(size - 1).mapIndexed { index, i -> Pair(i, second) }
 
     fun listOfPairsBySecond(size: Int, first: Int): List<Pair<Int, Int>> = 0.rangeTo(size - 1).mapIndexed { index, i -> Pair(first, i) }
+
+
+
+    fun toPair(list: List<List<Field>>): List<Pair<Int, Int>> {
+        return list.mapIndexed { x, list ->
+            list.filter { i -> i == Field.ANON }
+                    .mapIndexed { y, field -> Pair(x, y) }
+        }.flatMap { i -> i }
+    }
 }
