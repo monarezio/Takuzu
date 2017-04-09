@@ -67,6 +67,7 @@
         android:fontFamily="@string/font"
         android:text=""
         android:textColor="@color/white"
-        android:textSize="@dimen/_18" />
+        android:textSize="@dimen/_18"
+        android:textAlignment="center"/>
 
 </RelativeLayout>
