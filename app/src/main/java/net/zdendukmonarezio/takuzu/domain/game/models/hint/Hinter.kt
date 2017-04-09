@@ -66,22 +66,22 @@ class Hinter(private val board: Board): Hintable{
         val row = hintWrongRow()
 
         if(row != null)
-            return Hint(ListUtil.listOfPairsByFirst(board.columns(), row), FIELDS_DO_NOT_EQUAL_IN_ROW)
+            return Hint(ListUtil.listOfPairsBySecond(board.columns(), row), FIELDS_DO_NOT_EQUAL_IN_ROW)
 
         val column = hintWrongColumn()
         if(column != null)
-            return Hint(ListUtil.listOfPairsBySecond(board.rows(), column), FIELD_DO_NOT_EQUAL_IN_COLUMN)
+            return Hint(ListUtil.listOfPairsByFirst(board.rows(), column), FIELD_DO_NOT_EQUAL_IN_COLUMN)
 
         val rows = hintRows()
         if(rows != null)
             return Hint(
-                    ListUtil.listOfPairsByFirst(board.rows(), rows.first) + ListUtil.listOfPairsByFirst(board.rows(), rows.second),
+                    ListUtil.listOfPairsBySecond(board.rows(), rows.first) + ListUtil.listOfPairsBySecond(board.rows(), rows.second),
                     ROWS_EQUAL)
 
         val columns = hintColumns()
         if(columns != null)
             return Hint(
-                    ListUtil.listOfPairsBySecond(board.rows(), columns.first) + ListUtil.listOfPairsBySecond(board.rows(), columns.second),
+                    ListUtil.listOfPairsByFirst(board.rows(), columns.first) + ListUtil.listOfPairsByFirst(board.rows(), columns.second),
                     COLUMNS_EQUAL)
 
         return Hint(listOf(), NO_HINT_AVAILABLE)
