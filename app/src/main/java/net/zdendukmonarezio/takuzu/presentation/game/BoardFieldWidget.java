@@ -25,13 +25,13 @@ public class BoardFieldWidget extends View {
     private int row;
     private int column;
     private int fieldWidth;
-    private boolean locked;
+    private boolean highlighted;
 
 
     public BoardFieldWidget(Context context, Field gameField, int row, int column, int fieldWidth) {
         super(context);
         init(gameField, row, column, fieldWidth);
-        locked = false;
+        highlighted = false;
     }
 
     public BoardFieldWidget(Context context, Field gameField, int row, int column, int fieldWidth, List<Pair<Integer, Integer>> pairs) {
@@ -40,7 +40,7 @@ public class BoardFieldWidget extends View {
 
         for (Pair<Integer, Integer> pair : pairs) {
             if (pair.component1() == row && pair.component2() == column) {
-                locked = true;
+                highlighted = true;
             }
         }
         borderPaint = new Paint();
@@ -56,32 +56,6 @@ public class BoardFieldWidget extends View {
         gridPaint = new Paint();
         gridPaint.setColor(gameField == Field.ANON ? ContextCompat.getColor(getContext(), R.color.anonFieldColor) : gameField == Field.BLUE ?
                 ContextCompat.getColor(getContext(), R.color.blueFieldColor) : ContextCompat.getColor(getContext(), R.color.redFieldColor));
-
-        /*
-                            ____
-                          .'* *.'
-                       __/_*_*(_
-                      / _______ \
-                     _\_)/___\(_/_
-                    / _((\- -/))_ \
-                    \ \())(-)(()/ /
-                     ' \(((()))/ '
-                    / ' \)).))/ ' \     THIS WIZARD MAKES ALL THE COOL STUFF HAPPEN.
-                   / _ \ - | - /_  \    NO ONE KNOWS WHY IT WORKS BUT IT WORKS.
-                  (   ( .;''';. .'  )   DO NOT TOUCH.
-                  _\"__ /    )\ __"/_
-                    \/  \   ' /  \/
-                     .'  '...' ' )
-                      / /  |  \ \
-                     / .   .   . \
-                    /   .     .   \
-                   /   /   |   \   \
-                 .'   /    b    '.  '.
-             _.-'    /     Bb     '-. '-._
-         _.-'       |      BBb       '-.  '-.
-        (________mrf\____.dBBBb.________)____)
-
-      */
 
         int[] attrs = new int[]{R.attr.selectableItemBackground};
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs);
@@ -107,7 +81,7 @@ public class BoardFieldWidget extends View {
 
         int width = getWidth();
         int height = getHeight();
-        if (locked) {
+        if (highlighted) {
             canvas.drawRoundRect(new RectF(10, 10, width, height), 50, 50, borderPaint);
             canvas.drawRoundRect(new RectF(20, 20, width - 10, height - 10), 50, 50, gridPaint);
         } else {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_game"
     android:layout_width="match_parent"
@@ -44,5 +45,28 @@
         android:fontFamily="@string/font"
         android:text="@string/_0percent"
         android:textColor="@color/white" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/loading_screen_size"
+        android:layout_height="@dimen/loading_screen_size"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:onClick="showMistakes"
+        android:src="@drawable/eye_icon" />
+
+    <TextView
+        android:id="@+id/notification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@string/font"
+        android:text=""
+        android:textColor="@color/white"
+        android:textSize="@dimen/_18" />
 
 </RelativeLayout>

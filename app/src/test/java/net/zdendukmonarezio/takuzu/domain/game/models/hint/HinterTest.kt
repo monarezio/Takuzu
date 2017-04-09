@@ -66,11 +66,24 @@ class HinterTest {
                 listOf(Field.RED, Field.BLUE, Field.BLUE, Field.ANON)
         ), listOf()))
         Assert.assertEquals(2, hint2.hintWrongColumn())
+        val hint3 = Hinter(GameBoard.createBoard(listOf(
+                listOf(Field.RED, Field.BLUE, Field.RED, Field.ANON),
+                listOf(Field.BLUE, Field.RED, Field.RED, Field.ANON),
+                listOf(Field.BLUE, Field.RED, Field.BLUE, Field.ANON),
+                listOf(Field.RED, Field.BLUE, Field.BLUE, Field.RED)
+        ), listOf()))
+        Assert.assertEquals(3, hint3.hintWrongColumn())
     }
 
     @Test
     fun hintNext() {
-
+        val hint3 = Hinter(GameBoard.createBoard(listOf(
+                listOf(Field.RED, Field.BLUE, Field.RED, Field.ANON),
+                listOf(Field.BLUE, Field.RED, Field.RED, Field.ANON),
+                listOf(Field.BLUE, Field.RED, Field.BLUE, Field.ANON),
+                listOf(Field.RED, Field.BLUE, Field.BLUE, Field.RED)
+        ), listOf()))
+        Assert.assertEquals(3, hint3.hintNext())
     }
 
 }

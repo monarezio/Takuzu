@@ -55,7 +55,7 @@ public class GameBoardLayout extends GridLayout {
         }
     }
 
-    public void clickedOnLockedField(Board gameBoard, int gameSize, List<Pair<Integer, Integer>> pairs) {
+    public void highlightWrongFields(Board gameBoard, int gameSize, List<Pair<Integer, Integer>> pairs) {
         removeAllViews();
         setRowCount(gameBoard.rows());
         setColumnCount(gameBoard.columns());

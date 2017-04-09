@@ -45,4 +45,5 @@ class Game private constructor(private val board: Board) : Takuzu {
 
         private fun createGame(board: Board): Takuzu = Game(board)
     }
+
 }

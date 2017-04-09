@@ -28,6 +28,9 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
     @BindView(R.id.percent_counter)
     TextView percentCounter;
 
+    @BindView(R.id.notification)
+    TextView notification;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,18 +55,18 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
     }
 
     @Override
-    public void highlightWrongFields(List<Pair<Integer, Integer>> pairs) {
-        // TODO
-    }
-
-    @Override
     public void updatePercentStatus(int percent) {
         percentCounter.setText(percent + "%");
     }
 
     @Override
-    public void clickedOnLocked(Board gameBoard, int gameSize, List<Pair<Integer, Integer>> pairs) {
-        gameBoardLayout.clickedOnLockedField(gameBoard, gameSize, pairs);
+    public void highlightWrongFields(Board gameBoard, int gameSize, List<Pair<Integer, Integer>> pairs) {
+        gameBoardLayout.highlightWrongFields(gameBoard, gameSize, pairs);
+    }
+
+    @Override
+    public void setNotification(String message) {
+        notification.setText(message);
     }
 
     @Override
@@ -77,6 +80,10 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
 
     public void resetBoard(View view) {
         getPresenter().resetGame();
+    }
+
+    public void showMistakes(View view) {
+        getPresenter().showMistakes();
     }
 
 }

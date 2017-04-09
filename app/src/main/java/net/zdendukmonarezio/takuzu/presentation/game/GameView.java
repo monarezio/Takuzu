@@ -1,6 +1,7 @@
 package net.zdendukmonarezio.takuzu.presentation.game;
 
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Board;
+import net.zdendukmonarezio.takuzu.domain.game.models.hint.models.Hint;
 
 import java.util.List;
 
@@ -23,17 +24,18 @@ public interface GameView {
     void warn(String message);
 
     /*
-     *  highlights wrong fields with white outline
+     *  highlights wrong fields with white outline and writes corresponding message
      */
-    void highlightWrongFields(List<Pair<Integer, Integer>> pairs);
 
-    /*
-     *  updates TextView percent_counter with corresponding data
-     */
     void updatePercentStatus(int percent);
 
     /*
      *  renews Game Board with highlighted locked fields
      */
-    void clickedOnLocked(Board gameBoard, int gameSize, List<Pair<Integer, Integer>> pairs);
+    void highlightWrongFields(Board gameBoard, int gameSize, List<Pair<Integer, Integer>> pairs);
+
+    /*
+     *  shows notification on notification TextView
+     */
+    void setNotification(String message);
 }
