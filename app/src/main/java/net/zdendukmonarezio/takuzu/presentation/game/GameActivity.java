@@ -62,9 +62,14 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
     }
 
     @Override
+    public void clickedOnLocked(Board gameBoard, int gameSize, List<Pair<Integer, Integer>> pairs) {
+        gameBoardLayout.clickedOnLockedField(gameBoard, gameSize, pairs);
+    }
+
+    @Override
     public void goToResults(int score) {
         ScoreManager manager = ScoreManager.createScoreManager(this);
-        manager.addScore(4);
+        manager.addScore(score);
         Intent intent = new Intent(this, ResultsActivity.class);
         startActivity(intent);
     }

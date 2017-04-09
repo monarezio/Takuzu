@@ -31,4 +31,9 @@ public interface GameView {
      *  updates TextView percent_counter with corresponding data
      */
     void updatePercentStatus(int percent);
+
+    /*
+     *  renews Game Board with highlighted locked fields
+     */
+    void clickedOnLocked(Board gameBoard, int gameSize, List<Pair<Integer, Integer>> pairs);
 }

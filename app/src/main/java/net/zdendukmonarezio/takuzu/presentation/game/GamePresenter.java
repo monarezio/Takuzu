@@ -27,7 +27,7 @@ public class GamePresenter extends Presenter<GameView> {
         if (!game.isGameOver()) {
             if (game.isMovePossible(x, y)) {
                 if (game.isBoardFilled()) {
-                    List<Pair<Integer, Integer>> pairs = game.getWrongFields();
+                    List<Pair<Integer, Integer>> pairs = game.getWrongFields().getCoords();
                     viewIfExists().subscribe(view -> {
                         view.highlightWrongFields(pairs);
                     });
@@ -40,12 +40,14 @@ public class GamePresenter extends Presenter<GameView> {
                 });
                 if (game.isGameOver()) {
                     viewIfExists().subscribe(view -> {
-                        view.goToResults(gameSize*gameSize);
+                        view.goToResults(gameSize * gameSize);
                     });
                 }
             } else {
                 viewIfExists().subscribe(view -> {
-                    view.warn("This field is locked");
+                    List<Pair<Integer, Integer>> pairs = game.getGameBoard().getLockedFields();
+                    view.clickedOnLocked(game.getGameBoard(), gameSize, pairs);
+                    view.warn("These fields are locked");
                 });
             }
         }

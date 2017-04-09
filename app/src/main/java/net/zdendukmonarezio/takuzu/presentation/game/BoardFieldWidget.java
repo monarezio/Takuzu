@@ -13,18 +13,38 @@ import android.widget.GridLayout;
 import net.zdendukmonarezio.takuzu.R;
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Field;
 
+import java.util.List;
+
+import kotlin.Pair;
+
 public class BoardFieldWidget extends View {
 
     private Paint gridPaint;
+    private Paint borderPaint;
     private Field gameField;
     private int row;
     private int column;
     private int fieldWidth;
+    private boolean locked;
 
 
     public BoardFieldWidget(Context context, Field gameField, int row, int column, int fieldWidth) {
         super(context);
         init(gameField, row, column, fieldWidth);
+        locked = false;
+    }
+
+    public BoardFieldWidget(Context context, Field gameField, int row, int column, int fieldWidth, List<Pair<Integer, Integer>> pairs) {
+        super(context);
+        init(gameField, row, column, fieldWidth);
+
+        for (Pair<Integer, Integer> pair : pairs) {
+            if (pair.component1() == row && pair.component2() == column) {
+                locked = true;
+            }
+        }
+        borderPaint = new Paint();
+        borderPaint.setColor(ContextCompat.getColor(getContext(), R.color.white));
     }
 
     private void init(Field gameField, int row, int column, int fieldWidth) {
@@ -87,8 +107,12 @@ public class BoardFieldWidget extends View {
 
         int width = getWidth();
         int height = getHeight();
-
-        canvas.drawRoundRect(new RectF(10, 10, width, height), 50, 50, gridPaint);
+        if (locked) {
+            canvas.drawRoundRect(new RectF(10, 10, width, height), 50, 50, borderPaint);
+            canvas.drawRoundRect(new RectF(20, 20, width - 10, height - 10), 50, 50, gridPaint);
+        } else {
+            canvas.drawRoundRect(new RectF(10, 10, width, height), 50, 50, gridPaint);
+        }
     }
 
     public int getRow() {

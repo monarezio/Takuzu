@@ -12,6 +12,10 @@ import android.widget.GridLayout;
 import net.zdendukmonarezio.takuzu.R;
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Board;
 
+import java.util.List;
+
+import kotlin.Pair;
+
 public class GameBoardLayout extends GridLayout {
 
     private OnMoveListener listener;
@@ -42,6 +46,24 @@ public class GameBoardLayout extends GridLayout {
         for (int r = 0; r < gameBoard.rows(); r++) {
             for (int c = 0; c < gameBoard.columns(); c++) {
                 BoardFieldWidget field = new BoardFieldWidget(getContext(), gameBoard.getFields().get(r).get(c), r, c, fieldWidth);
+                addView(field);
+            }
+        }
+
+        if (listener != null) {
+            setupFieldListeners(listener);
+        }
+    }
+
+    public void clickedOnLockedField(Board gameBoard, int gameSize, List<Pair<Integer, Integer>> pairs) {
+        removeAllViews();
+        setRowCount(gameBoard.rows());
+        setColumnCount(gameBoard.columns());
+        int fieldWidth = getFieldWidth(gameSize);
+
+        for (int r = 0; r < gameBoard.rows(); r++) {
+            for (int c = 0; c < gameBoard.columns(); c++) {
+                BoardFieldWidget field = new BoardFieldWidget(getContext(), gameBoard.getFields().get(r).get(c), r, c, fieldWidth, pairs);
                 addView(field);
             }
         }
