@@ -28,6 +28,11 @@ interface Hintable {
     fun hintWrongColumn(): Int?
 
     /**
+     * returns a hint by its color if its possible
+     */
+    fun hintByColor(): Pair<Int, Int>
+
+    /**
      * hints the next best move
      * returns list of moves
      */

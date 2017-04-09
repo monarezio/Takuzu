@@ -5,6 +5,7 @@ import android.os.Bundle;
 import net.zdendukmonarezio.takuzu.domain.game.Game;
 import net.zdendukmonarezio.takuzu.domain.game.Takuzu;
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Board;
+import net.zdendukmonarezio.takuzu.domain.game.models.hint.models.Hint;
 import net.zdendukmonarezio.takuzu.domain.score.ScoreManager;
 import net.zdendukmonarezio.takuzu.presentation.Presenter;
 
@@ -27,9 +28,13 @@ public class GamePresenter extends Presenter<GameView> {
         if (!game.isGameOver()) {
             if (game.isMovePossible(x, y)) {
                 if (game.isBoardFilled()) {
+<<<<<<< HEAD
                     List<Pair<Integer, Integer>> pairs = game.getWrongFields().getCoords();
+=======
+                    Hint hint = game.getWrongFields();
+>>>>>>> 4e000afec559cd40a25dc2565c7365e2433b696b
                     viewIfExists().subscribe(view -> {
-                        view.highlightWrongFields(pairs);
+                        view.highlightWrongFields(hint.getCoords());
                     });
                 }
                 game = game.onMoveMade(x, y);
