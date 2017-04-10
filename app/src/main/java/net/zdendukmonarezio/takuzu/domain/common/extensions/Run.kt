@@ -19,5 +19,5 @@ fun main(args: Array<String>) {
             listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
     )
 
-    println(ListUtil.toPair(a))
+    println(a.map { i -> i[0] })
 }

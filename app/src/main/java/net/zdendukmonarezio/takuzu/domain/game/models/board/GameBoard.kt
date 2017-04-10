@@ -119,7 +119,7 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
     /**
      * returns true if fields don't contain Field.ANON
      */
-    private fun isFilledIn(): Boolean {
+    override fun isFilledIn(): Boolean {
         return !fields.layeredAny { item -> item == Field.ANON }
     }
 

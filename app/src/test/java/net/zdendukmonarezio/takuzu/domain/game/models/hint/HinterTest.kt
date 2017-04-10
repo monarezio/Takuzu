@@ -1,5 +1,6 @@
 package net.zdendukmonarezio.takuzu.domain.game.models.hint
 
+import junit.framework.Assert.assertEquals
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Field
 import net.zdendukmonarezio.takuzu.domain.game.models.game.GameBoard
 import org.junit.Assert
@@ -92,6 +93,42 @@ class HinterTest {
                 listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON)
         ), listOf()))
         Assert.assertEquals(3, hint2.hintNext())*/
+    }
+
+    @Test
+    fun hintByColor() {
+        val hint = Hinter(GameBoard.createBoard(listOf(
+                listOf(Field.RED, Field.ANON, Field.RED, Field.ANON),
+                listOf(Field.BLUE, Field.RED, Field.RED, Field.BLUE),
+                listOf(Field.BLUE, Field.RED, Field.BLUE, Field.RED),
+                listOf(Field.RED, Field.BLUE, Field.BLUE, Field.RED)
+        ), listOf()))
+        assertEquals(Pair(0, 1), hint.hintByColor())
+        val hint2 = Hinter(GameBoard.createBoard(listOf(
+                listOf(Field.BLUE, Field.RED, Field.RED, Field.BLUE),
+                listOf(Field.BLUE, Field.RED, Field.RED, Field.RED),
+                listOf(Field.RED, Field.RED, Field.BLUE, Field.RED),
+                listOf(Field.RED, Field.RED, Field.BLUE, Field.ANON)
+        ), listOf()))
+        assertEquals(Pair(3, 3), hint2.hintByColor())
+        val hint3 = Hinter(GameBoard.createBoard(listOf(
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.RED, Field.RED),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+        ), listOf()))
+        assertEquals(Pair(2, 1), hint3.hintByColor())
+    }
+
+    @Test
+    fun hintAdjacency() {
+        val hint3 = Hinter(GameBoard.createBoard(listOf(
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.ANON, Field.RED, Field.RED, Field.RED),
+                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
+        ), listOf()))
+        assertEquals(listOf(Pair(2, 1), Pair(2, 2), Pair(2, 3)), hint3.hintAdjacency())
     }
 
 }

@@ -112,11 +112,8 @@ public class GamePresenter extends Presenter<GameView> {
                 case COLUMNS_HAS_EQUAL_NUMBER_OF_EACH_FIELD:
                     view.setNotification("There should be an equal number of red fields and blue fields in each columns");
                     break;
-                case THREE_BLUE_TILES_HINT:
-                    view.setNotification("There can be max 2 blue fields consecutively");
-                    break;
-                case THREE_RED_TILES_HINT:
-                    view.setNotification("There can be max 2 red fields consecutively");
+                case THREE_TILES_HINT:
+                    view.setNotification("There can be max 2 fields consecutively");
                     break;
                 case ONLY_ONE_POSSIBLE_COMBINATION:
                     view.setNotification("There should be no equivalent rows or columns");

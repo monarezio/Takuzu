@@ -28,9 +28,19 @@ interface Hintable {
     fun hintWrongColumn(): Int?
 
     /**
-     * returns a hint by its color if its possible
+     * returns the position of pairs that are adjacent
      */
-    fun hintByColor(): Pair<Int, Int>
+    fun hintAdjacency(): List<Pair<Int, Int>>?
+
+    /**
+     * returns a hint by its color if its possible R;A;R or R;R;A or A;R;R
+     */
+    fun hintByColor(): Pair<Int, Int>?
+
+    /**
+     * returns a hint by the possible combinations
+     */
+    fun hintByCombination(): List<Pair<Int, Int>>?
 
     /**
      * hints the next best move

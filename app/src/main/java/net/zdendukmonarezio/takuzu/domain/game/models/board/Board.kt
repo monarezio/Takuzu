@@ -69,4 +69,9 @@ interface Board {
      * TODO: discuss the usefulness of this function
      */
     fun columns(): Int
+
+    /**
+     * returns true if the board does not contain Field.ANON
+     */
+    fun isFilledIn(): Boolean
 }
