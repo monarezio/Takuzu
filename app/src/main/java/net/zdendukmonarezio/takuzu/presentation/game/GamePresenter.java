@@ -88,17 +88,41 @@ public class GamePresenter extends Presenter<GameView> {
         Hint hint = game.getWrongFields();
         viewIfExists().subscribe(view -> {
             switch (hint.component2()) {
+                /*
+                 * ERRORS
+                 */
                 case ROWS_EQUAL:
-                    view.setNotification("There can't be any equal rows.");
+                    view.setNotification("There can't be any equal rows");
                     break;
                 case COLUMNS_EQUAL:
-                    view.setNotification("There can't be any equal columns.");
+                    view.setNotification("There can't be any equal columns");
                     break;
                 case FIELDS_DO_NOT_EQUAL_IN_ROW:
-                    view.setNotification("There is an equal number of red fields and blue fields in each row");
+                    view.setNotification("There is not an equal number of red fields and blue fields in each row");
                     break;
                 case FIELD_DO_NOT_EQUAL_IN_COLUMN:
-                    view.setNotification("There is an equal number of red fields and blue fields in each column");
+                    view.setNotification("There is not an equal number of red fields and blue fields in each column");
+                    break;
+                /*
+                 * HINTS
+                 */
+                case ROWS_HAS_EQUAL_NUMBER_OF_EACH_FIELD:
+                    view.setNotification("There should be an equal number of red fields and blue fields in each row");
+                    break;
+                case COLUMNS_HAS_EQUAL_NUMBER_OF_EACH_FIELD:
+                    view.setNotification("There should be an equal number of red fields and blue fields in each columns");
+                    break;
+                case THREE_BLUE_TILES_HINT:
+                    view.setNotification("There can be max 2 blue fields consecutively");
+                    break;
+                case THREE_RED_TILES_HINT:
+                    view.setNotification("There can be max 2 red fields consecutively");
+                    break;
+                case ONLY_ONE_POSSIBLE_COMBINATION:
+                    view.setNotification("There should be no equivalent rows or columns");
+                    break;
+                case NO_HINT_AVAILABLE:
+                    view.setNotification("NO HINT AVAILABLE FUCK YOU");
                     break;
             }
             view.highlightWrongFields(game.getGameBoard(), gameSize, hint.getCoords());
