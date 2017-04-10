@@ -171,6 +171,10 @@ class Hinter(private val board: Board): Hintable{
             val hintCombo = hintByCombination()
             if (hintCombo != null)
                 return Hint(hintCombo, ONLY_ONE_POSSIBLE_COMBINATION)
+
+            val row = hintWrongRow()
+            if (row != null)
+                return Hint(ListUtil.listOfPairsBySecond(board.columns(), row), FIELDS_DO_NOT_EQUAL_IN_ROW)
         } else {
             val adjacency = hintAdjacency()
             if(adjacency != null)
