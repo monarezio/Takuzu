@@ -71,6 +71,7 @@ public class GamePresenter extends Presenter<GameView> {
         viewIfExists().subscribe(view -> {
             view.showGameBoard(game.getGameBoard(), gameSize);
             view.updatePercentStatus(0);
+            view.setNotification("");
         });
     }
 
