@@ -1,6 +1,7 @@
 package net.zdendukmonarezio.takuzu.presentation.game;
 
 import android.os.Bundle;
+import android.os.Handler;
 
 import net.zdendukmonarezio.takuzu.domain.game.Game;
 import net.zdendukmonarezio.takuzu.domain.game.Takuzu;
@@ -32,13 +33,7 @@ public class GamePresenter extends Presenter<GameView> {
                         showMistakes();
                     });
                 }
-                game = game.onMoveMade(x, y);
-                Board newGameBoard = game.getGameBoard();
-                viewIfExists().subscribe(view -> {
-                    view.showGameBoard(newGameBoard, gameSize);
-                    view.updatePercentStatus(game.getGameBoard().getProgress());
-                    view.setNotification("");
-                });
+                presentMove(x, y);
                 if (game.isGameOver()) {
                     viewIfExists().subscribe(view -> {
                         view.goToResults(gameSize * gameSize);
@@ -46,12 +41,26 @@ public class GamePresenter extends Presenter<GameView> {
                 }
             } else {
                 viewIfExists().subscribe(view -> {
-                    List<Pair<Integer, Integer>> pairs = game.getGameBoard().getLockedFields();
-                    view.highlightWrongFields(game.getGameBoard(), gameSize, pairs);
-                    view.setNotification("These fields are locked");
+                    clickedOnLocked(view);
                 });
             }
         }
+    }
+
+    private void clickedOnLocked(GameView view) {
+        List<Pair<Integer, Integer>> pairs = game.getGameBoard().getLockedFields();
+        view.highlightWrongFields(game.getGameBoard(), gameSize, pairs);
+        view.setNotification("These fields are locked");
+    }
+
+    private void presentMove(int x, int y) {
+        game = game.onMoveMade(x, y);
+        Board newGameBoard = game.getGameBoard();
+        viewIfExists().subscribe(view -> {
+            view.showGameBoard(newGameBoard, gameSize);
+            view.updatePercentStatus(game.getGameBoard().getProgress());
+            view.setNotification("");
+        });
     }
 
     public void setGameSize(int gameSize) {
@@ -94,5 +103,16 @@ public class GamePresenter extends Presenter<GameView> {
             }
             view.highlightWrongFields(game.getGameBoard(), gameSize, hint.getCoords());
         });
+        hideMistakesDelay();
+    }
+
+    private void hideMistakesDelay() {
+        final Handler handler = new Handler();
+        handler.postDelayed(() -> {
+            viewIfExists().subscribe(view -> {
+                view.showGameBoard(game.getGameBoard(), gameSize);
+                view.fadeOutNotification();
+            });
+        }, 3000);
     }
 }

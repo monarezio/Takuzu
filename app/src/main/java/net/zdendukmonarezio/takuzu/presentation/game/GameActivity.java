@@ -3,6 +3,7 @@ package net.zdendukmonarezio.takuzu.presentation.game;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -67,6 +68,18 @@ public class GameActivity extends NucleusActivity<GamePresenter> implements Game
     @Override
     public void setNotification(String message) {
         notification.setText(message);
+        AlphaAnimation fadeIn = new AlphaAnimation(0.0f, 1.0f);
+        notification.startAnimation(fadeIn);
+        fadeIn.setDuration(1200);
+        fadeIn.setFillAfter(true);
+    }
+
+    @Override
+    public void fadeOutNotification() {
+        AlphaAnimation fadeOut = new AlphaAnimation(1.0f, 0.0f);
+        notification.startAnimation(fadeOut);
+        fadeOut.setDuration(1200);
+        fadeOut.setFillAfter(true);
     }
 
     @Override

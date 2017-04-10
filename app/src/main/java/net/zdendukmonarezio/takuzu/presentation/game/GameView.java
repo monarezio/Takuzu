@@ -38,4 +38,6 @@ public interface GameView {
      *  shows notification on notification TextView
      */
     void setNotification(String message);
+
+    void fadeOutNotification();
 }
