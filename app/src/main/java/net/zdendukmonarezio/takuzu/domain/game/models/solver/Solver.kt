@@ -4,6 +4,7 @@ import net.zdendukmonarezio.takuzu.domain.common.utils.ListUtil
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Board
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Field
 import net.zdendukmonarezio.takuzu.domain.game.models.game.GameBoard
+import net.zdendukmonarezio.takuzu.domain.game.models.hint.Hinter
 
 /**
  * Created by monarezio on 09/04/2017.
@@ -11,23 +12,24 @@ import net.zdendukmonarezio.takuzu.domain.game.models.game.GameBoard
 class Solver(private val board: Board): Solvable {
 
     override fun isSolvable(): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        println("Solving")
+        val a = solve()
+        return a != null
     }
 
     override fun solve(): Board? {
-        fun helper(gameBoard: GameBoard): Board? {
+        fun helper(gameBoard: Board): Board? {
             if(gameBoard.validateColorAmount() && gameBoard.validateAdjacency()) {
-                val anonymousCoords = ListUtil.toPair(gameBoard.getFields())
-                if (!anonymousCoords.isEmpty()) {
-                    for (i in 0..anonymousCoords.size - 1) {
-                        val blueBoard = gameBoard.set(anonymousCoords[i].first, anonymousCoords[i].second, Field.BLUE)
-                        val blue = helper(blueBoard as GameBoard)
-                        if (blue != null)
+                val next = Hinter(gameBoard).hintOnly().coords
+                        .filter { i -> gameBoard.getFields()[i.first][i.second] == Field.ANON }
+                if (!next.isEmpty()) {
+                    for (i in 0..next.size - 1) {
+                        val blue = helper(gameBoard.set(next[i].first, next[i].second, Field.BLUE))
+                        if(blue != null)
                             return blue
 
-                        val redBoard = gameBoard.set(anonymousCoords[i].first, anonymousCoords[i].second, Field.RED)
-                        val red = helper(redBoard as GameBoard)
-                        if (red != null)
+                        val red = helper(gameBoard.set(next[i].first, next[i].second, Field.RED))
+                        if(red != null)
                             return red
                     }
                 } else if (gameBoard.validateAll()) {

@@ -4,6 +4,7 @@ import net.zdendukmonarezio.takuzu.domain.common.extensions.random
 import net.zdendukmonarezio.takuzu.domain.common.utils.ListUtil
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Board
 import net.zdendukmonarezio.takuzu.domain.game.models.game.Field
+import net.zdendukmonarezio.takuzu.domain.game.models.game.GameBoard
 import net.zdendukmonarezio.takuzu.domain.game.models.hint.models.Hint
 import net.zdendukmonarezio.takuzu.domain.game.models.hint.models.Notification.*
 
@@ -194,6 +195,24 @@ class Hinter(private val board: Board): Hintable{
                 return Hint(
                         ListUtil.listOfPairsByFirst(board.rows(), columns.first) + ListUtil.listOfPairsByFirst(board.rows(), columns.second),
                         COLUMNS_EQUAL)
+        }
+
+        return Hint(listOf(), NO_HINT_AVAILABLE)
+    }
+
+    fun hintOnly(): Hint {
+        val hintColor = hintByColor()
+        if (hintColor != null)
+            return Hint(listOf(hintColor), THREE_TILES_HINT)
+
+        val hintCombo = hintByCombination()
+        if (hintCombo != null)
+            return Hint(hintCombo, ONLY_ONE_POSSIBLE_COMBINATION)
+
+        if(board is GameBoard) {
+            val list = board.getNextAvailableMove()
+            if(list != null)
+                return Hint(listOf(list), NO_HINT_AVAILABLE)
         }
 
         return Hint(listOf(), NO_HINT_AVAILABLE)

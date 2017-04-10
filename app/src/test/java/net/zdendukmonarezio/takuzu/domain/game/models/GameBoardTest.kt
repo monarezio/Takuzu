@@ -40,8 +40,8 @@ class GameBoardTest {
     @Test fun validateColorAmount() {
         val gameBoard = GameBoard.createBoard(listOf(
                 listOf(Field.BLUE, Field.BLUE, Field.ANON, Field.ANON),
-                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
-                listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.BLUE, Field.ANON, Field.ANON, Field.ANON),
+                listOf(Field.RED, Field.RED, Field.ANON, Field.ANON),
                 listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
         ), listOf())
         assertTrue(gameBoard.validateColorAmount())
@@ -96,15 +96,6 @@ class GameBoardTest {
                 listOf(Field.RED, Field.BLUE, Field.BLUE, Field.RED)
         ), listOf())
         assertTrue(gameBoard.validateAll())
-        val newGameBoard = gameBoard.set(0, 0, Field.RED)
-        assertFalse(newGameBoard.validateAll())
-        val gameBoard2 = GameBoard.createBoard(listOf(
-                listOf(Field.RED, Field.BLUE, Field.RED, Field.BLUE),
-                listOf(Field.BLUE, Field.RED, Field.BLUE, Field.RED),
-                listOf(Field.BLUE, Field.BLUE, Field.ANON, Field.ANON),
-                listOf(Field.RED, Field.RED, Field.ANON, Field.ANON)
-        ), listOf())
-        assertFalse(gameBoard2.validateAll())
     }
 
     @Test

@@ -3,6 +3,7 @@ package net.zdendukmonarezio.takuzu.domain.game.models.game
 import net.zdendukmonarezio.takuzu.domain.common.extensions.*
 import net.zdendukmonarezio.takuzu.domain.common.utils.FieldPickerUtil
 import net.zdendukmonarezio.takuzu.domain.common.utils.ListUtil
+import net.zdendukmonarezio.takuzu.domain.game.models.solver.Solver
 
 /**
  * Created by samuelkodytek on 06/03/2017.
@@ -69,31 +70,25 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
         return true
     }
 
-    private fun validateRowAdjacency(): Boolean {
-        for(i in 0..rows()-1) {
-            for(j in 0..rows()-3) {
-                if(fields[i][j] != Field.ANON && (fields[i][j] == fields[i][j+1] && fields[i][j+1] == fields[i][j+2] ))
-                    return false
-            }
-        }
-
-        return true
-    }
-
-    private fun validateColumnAdjacency(): Boolean {
-        for(i in 0..columns()-1) {
-            val col = fields.map { k -> k[i] } //Tranforming into column
-            for(j in 0..columns()-3) {
-                if(col[j] != Field.ANON && (col[j] == col[j+1] && col[j+1] == col[j+2] ))
-                    return false
-            }
-        }
-
-        return true
-    }
-
     override fun validateAdjacency(): Boolean {
-        return validateColumnAdjacency() && validateRowAdjacency()
+
+        for(i in 0..rows() - 1) {
+            for(j in 0..columns() - 3) {
+                if ((fields[i][j] != Field.ANON || fields[i][j + 1] != Field.ANON || fields[i][j + 1] != Field.ANON) &&
+                        fields[i][j] == fields[i][j + 1] && fields[i][j + 1] == fields[i][j + 2])
+                    return false
+            }
+        }
+
+        for(i in 0..rows() - 3) {
+            for(j in 0..columns() - 1) {
+                if ((fields[i][j] != Field.ANON || fields[i + 1][j] != Field.ANON || fields[i + 2][j] != Field.ANON) &&
+                        fields[i][j] == fields[i + 1][j] && fields[i + 1][j] == fields[i + 2][j])
+                    return false
+            }
+        }
+
+        return true
     }
 
     override fun validateFieldAmount(): Boolean {
@@ -101,16 +96,31 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
     }
 
     private fun validateRowsColorAmount(): Boolean {
-        return !fields.any { i -> i.filter { i -> i == Field.BLUE }.size > rows() / 2
-                || i.filter { i -> i == Field.RED }.size > rows() / 2 }
+        for(i in 0..rows() - 1) {
+            val row = getField(i)
+            val size = row.filter { i -> i == Field.ANON }.size
+            if(size != 0) {
+                val blue = row.filter { i -> i == Field.BLUE }.size
+                val red = row.filter { i -> i == Field.RED }.size
+                if(blue > rows() / 2 || red > rows() / 2)
+                    return false
+            }
+        }
+
+        return true
     }
 
     private fun validateColumnsColorAmount(): Boolean {
-        for(i in 0..columns() - 1) {
-            val col = fields.map { list -> list[i] }
-            if(col.filter { i -> i == Field.BLUE }.size > columns() / 2
-                    && col.filter { i -> i == Field.RED }.size > columns() / 2)
-                return false
+        for (i in 0..columns() - 1) {
+            val column = getFields().map { item -> item[i] }
+            val size = column.filter { i -> i == Field.ANON }.size
+            if (size != 0) {
+                val blue = column.filter { i -> i == Field.BLUE }.size
+                val red = column.filter { i -> i == Field.RED }.size
+                if(blue > rows() / 2 || red > rows() / 2)
+                    return false
+            }
+
         }
 
         return true
@@ -136,6 +146,17 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
                 && validateColorAmount()
     }
 
+    fun getNextAvailableMove(): Pair<Int, Int>? {
+        for(i in 0..rows()-1) {
+            for(j in 0..columns()-1) {
+                if(fields[i][j] == Field.ANON)
+                    return Pair(i, j)
+            }
+        }
+
+        return null
+    }
+
     companion object GameBoard {
 
         /**
@@ -144,8 +165,9 @@ class GameBoard private constructor(fields: List<List<Field>>, lockedFields: Lis
         fun createBlankBoard(rows: Int, columns: Int): Board {
             val gb = GameBoard(ListUtil.createNewFields(List(rows) {List(rows) { Field.ANON }}, rows * columns / 4))
 
-            if(!(gb.validateColorAmount() && gb.validateAdjacency())) //Using the famous ostrich algorithm https://en.wikipedia.org/wiki/Ostrich_algorithm
-                createBlankBoard(rows, columns)
+            if(!(gb.validateColorAmount() && gb.validateAdjacency()
+                    && gb.validateFieldAmount() && Solver(gb).isSolvable())) //Using the famous ostrich algorithm https://en.wikipedia.org/wiki/Ostrich_algorithm
+                return createBlankBoard(rows, columns)
 
             return gb
         }

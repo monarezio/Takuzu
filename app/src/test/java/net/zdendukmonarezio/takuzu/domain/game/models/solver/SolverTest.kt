@@ -20,7 +20,7 @@ class SolverTest {
         val board = GameBoard.createBoard(listOf(
             listOf(Field.BLUE, Field.ANON, Field.BLUE, Field.ANON),
             listOf(Field.ANON, Field.RED, Field.ANON, Field.ANON),
-            listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON),
+            listOf(Field.ANON, Field.RED, Field.ANON, Field.ANON),
             listOf(Field.ANON, Field.ANON, Field.ANON, Field.ANON)
         ), listOf(Pair(0, 0), Pair(0, 2), Pair(1, 1), Pair(2, 1)))
         val solver = Solver(board)
