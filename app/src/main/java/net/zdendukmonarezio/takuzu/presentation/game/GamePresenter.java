@@ -119,7 +119,7 @@ public class GamePresenter extends Presenter<GameView> {
                     view.setNotification("There should be no equivalent rows or columns");
                     break;
                 case NO_HINT_AVAILABLE:
-                    view.setNotification("NO HINT AVAILABLE FUCK YOU");
+                    view.setNotification("No hint is available for this situation");
                     break;
             }
             view.highlightWrongFields(game.getGameBoard(), gameSize, hint.getCoords());
